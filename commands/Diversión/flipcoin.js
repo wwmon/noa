@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'flipcoin',
-      description: 'Juega a tirar la moneda para obtener cara o cruz.',
+      description: 'Juega a tirar la moneda para obtener cara o cruz',
       usage: prefix => `\`${prefix}flipcoin\``,
       examples: prefix => `\`${prefix}flipcoin\``,
       enabled: true,

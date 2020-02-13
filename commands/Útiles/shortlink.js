@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'shortlink',
-      description: 'Acorta una URL de manera segura.',
+      description: 'Acorta una URL de manera segura',
       usage: prefix => `\`${prefix}shortlink <url> <título>\``,
       examples: prefix => `\`${prefix}shortlink www.youtube.com MiVideoEnYT\``,
       enabled: true,
@@ -21,7 +21,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
 
       if (!args[1]) {
         shorten.shorten(args[0], function(res) {
-          if (res.startsWith('Error:')) return message.channel.send(`Por favor ingresa una URL válida.`);
+          if (res.startsWith('Error:')) return message.channel.send(`Por favor ingresa una URL válida`);
           message.channel.send(`URL acortada: **<${res}>**`);
         });
       } else {

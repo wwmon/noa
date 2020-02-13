@@ -35,7 +35,7 @@ module.exports = class event {
         }
       }
       if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
-        message.channel.send('¡Hola! Soy ' + client.config.bot + ', para conocer más de mí puedes consultar con `' + message.prefix + 'help`.');
+        message.channel.send('¡Hola! Soy ' + client.config.bot + ', para conocer más de mí puedes consultar con `' + message.prefix + 'help`');
       }
       let prefix = client.fns.getPrefix(message, data);
       if (!prefix) return;

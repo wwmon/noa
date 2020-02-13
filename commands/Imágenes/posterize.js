@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'posterize',
-      description: 'Genera un filtro de imagen que posteriza un avatar.',
+      description: 'Genera un filtro de imagen que posteriza un avatar',
       usage: prefix => `\`${prefix}posterize [@usuario]\``,
       examples: prefix => `\`${prefix}posterize\``,
       enabled: true,

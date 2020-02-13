@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'unmute',
-      description: 'Revoca el silencio de un usuario en el servidor.',
+      description: 'Revoca el silencio de un usuario en el servidor',
       usage: prefix => `\`${prefix}unmute <@usuario> [razón]\``,
       examples: prefix => `\`${prefix}unmute @mon#6969\``,
       enabled: true,
@@ -21,21 +21,21 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send(client.fns.noPerm(message));
       let mUser = message.guild.member(message.mentions.users.first());
       let pedir = message.mentions.users.first();
-      if (!mUser) return message.channel.send(`Menciona al usuario que al que debo remover su silenciamiento.`);
+      if (!mUser) return message.channel.send(`Menciona al usuario que al que debo remover su silenciamiento`);
 
       if (pedir === message.author) return message.channel.send(client.fns.tryingAutoInfract(message));
-      if (pedir == client.user) return message.channel.send(`No puede hacer esto sobre mi, intenta con otro.`);
+      if (pedir == client.user) return message.channel.send(`No puede hacer esto sobre mi, intenta con otro`);
 
       let mutedrole = mUser.roles.find(`name`, 'Silenciado');
 
-      if (!message.guild.member(mUser).bannable) return message.channel.send(`No puedo quita el silencio al usuario mencionado. Es posible que no tenga el rango requerido o el usuario es superior a mí.`);
+      if (!message.guild.member(mUser).bannable) return message.channel.send(`No puedo quita el silencio al usuario mencionado. Es posible que no tenga el rango requerido o el usuario es superior a mí`);
 
       let reason = message.content
         .split(' ')
         .slice(2)
         .join(' ');
       if (!reason) {
-        reason = 'No específicada.';
+        reason = 'No específicada';
       }
 
       let muterole = message.guild.roles.cache.find(`name`, 'Silenciado');

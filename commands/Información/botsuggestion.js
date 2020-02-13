@@ -2,9 +2,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'botsuggestion',
-      description: 'Envía tu sugerencia directa al servidor de soporte para mejorar el bot.',
+      description: 'Envía tu sugerencia directa al servidor de soporte para mejorar el bot',
       usage: prefix => `\`${prefix}botsuggestion <sugerencia>\``,
-      examples: prefix => `\`${prefix}botsuggestion Agregar un comando para banear a todos los usuarios de un servidor!\``,
+      examples: prefix => `\`${prefix}botsuggestion Agregar un comando para vetar a todos los usuarios de un servidor\``,
       enabled: true,
       cooldown: 30,
       aliases: [],
@@ -16,9 +16,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) {
-        return message.channel.send('Debes agregar la sugerencia que quieres enviar.\n\n> **Uso correcto:** `' + message.prefix + 'botsuggestion <sugerencia>`.');
-      } else {
+      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs debes escribir tu sugerencia', usage: this.help.usage(message.prefix), message }));
+      else {
         message.channel.send('Estás a punto de enviar una sugerencia al servidor de soporte de ' + client.config.bot + ', __**¿estás seguro que quieres ejecutar esta acción?.**__\n\n*Responde con `si` para confirmar la acción, o responde `no` para cancelar el comando.*');
         let i = await message.channel.awaitMessages(m => m.author.id === message.author.id, { max: 1, errors: ['cancelar'] });
         i = await i.first();
@@ -31,11 +30,11 @@ module.exports = class command extends require('../../base/models/Command.js') {
           let msg = await client.channels.cache.get('669009316191404037').send({ embed });
           msg.react('487031865577046026');
           msg.react('487031865165873172');
-          message.channel.send('Tu sugerencia ha sido enviada correctamente.');
+          message.channel.send(client.fns.message({ emoji: 'green', razón: 'sugerencia enviada correctamente', message }));
         } else if (i.content.toLowerCase().includes('no')) {
-          message.channel.send('Está bien, cancelando operación.');
+          message.channel.send(client.fns.message({ emoji: 'gray', razón: 'está bien, cancelando operación', message }));
         } else {
-          message.channel.send('Respuesta incorrecta, cancelando operación.');
+          message.channel.send(client.fns.message({ emoji: 'green', razón: 'respuesta incorrecta, cancelando operación', message }));
         }
       }
     } catch (e) {

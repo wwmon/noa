@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: '3000years',
-      description: 'Genera una imagen de Pokémon con el meme "3000 años han pasado".',
+      description: 'Genera una imagen de Pokémon con el meme "3000 años han pasado"',
       usage: prefix => `\`${prefix}3000years [@usuario]\``,
       examples: prefix => `\`${prefix}3000years\``,
       enabled: true,

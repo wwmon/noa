@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'bigtext',
-      description: 'Enormece tu pequeño texto y hazlo lucir mucho mejor.',
+      description: 'Enormece tu pequeño texto y hazlo lucir mucho mejor',
       usage: prefix => `\`${prefix}bigtext <texto>\``,
       examples: prefix => `\`${prefix}bigtext Soy enorme\``,
       enabled: true,
@@ -20,7 +20,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         mapping[c] = mapping[c.toUpperCase()] = ` :regional_indicator_${c}:`;
       });
       if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs escribe un texto para agrandar', usage: this.help.usage(message.prefix), message }));
-      else if (args.length > 80) message.channel.send(`**${message.author.username}**, bajale un poco! Escribe un texto menor a 80 caracteres.`);
+      else if (args.length > 80) message.channel.send(client.fns.message({ emoji: 'red', razón: 'el texto no puede exceder los 80 carácters', message }));
       message.channel.send(
         args
           .join(' ')

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'hug',
-      description: 'Demuestra tu cariño, abrazando a un usuario.',
+      description: 'Demuestra tu cariño, abrazando a un usuario',
       usage: prefix => `\`${prefix}hug <@usuario>\``,
       examples: prefix => `\`${prefix}\``,
       enabled: true,
@@ -24,7 +24,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send(embed);
         return;
       }
-      if (message.mentions.users.first() == client.user) return message.channel.send('Aprecio tu cariño, pero no quiero un abrazo.');
+      if (message.mentions.users.first() == client.user) return message.channel.send('Aprecio tu cariño, pero no quiero un abrazo');
       if (message.mentions.users.size < 1) return message.channel.send('¡Vamos, se cariñoso y menciona a alguien para abrazarlo!');
       embed
         .setColor(client.fns.selectColor('lightcolors'))

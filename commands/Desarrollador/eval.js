@@ -5,7 +5,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'eval',
-      description: 'Evalúa código.',
+      description: 'Evalúa código',
       usage: prefix => `\`${prefix}eval <código>\``,
       examples: prefix => `\`${prefix}eval client.ws.ping\``,
       enabled: true,

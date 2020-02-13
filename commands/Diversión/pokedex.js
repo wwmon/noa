@@ -2,9 +2,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'pokedex',
-      description: 'Busca un pokémon en la pokedex.',
+      description: 'Busca un pokémon en la pokedex',
       usage: prefix => `\`${prefix}pokedex <pokémon | número>\``,
-      examples: prefix => `\`${prefix}pokedex Manaphy\n${prefix}pokedex 34\``,
+      examples: prefix => `\`${prefix}pokedex Manaphy\`\n\`${prefix}pokedex 34\``,
       enabled: true,
       aliases: [],
       botPermissions: [],

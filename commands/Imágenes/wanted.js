@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'wanted',
-      description: 'Genera un avatar con un avatar en un postér de "El más búscado".',
+      description: 'Genera un avatar con un avatar en un postér de "El más búscado"',
       usage: prefix => `\`${prefix}wanted [@usuario]\``,
       examples: prefix => `\`${prefix}wanted\``,
       enabled: false,

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'blur',
-      description: 'Genera una imagen con un avatar que tiene desenfoque.',
+      description: 'Genera una imagen con un avatar que tiene desenfoque',
       usage: prefix => `\`${prefix}blur [@usuario]\``,
       examples: prefix => `\`${prefix}blur\``,
       enabled: true,

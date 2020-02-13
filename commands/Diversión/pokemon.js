@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'pokémon',
-      description: 'Adivina el Pokémon.',
+      description: 'Adivina el Pokémon',
       usage: prefix => `\`${prefix}pokemon\``,
       examples: prefix => `\`${prefix}pokemon\``,
       enabled: true,
@@ -28,7 +28,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       attempts = await attempts.first();
       if (!attempts) {
         msg.edit({ embed: { color: 0xc82828, title: '<:pokemonLeft:600412308912734262> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
-        return message.channel.send('Tardaste mucho tiempo en escribir, por lo tanto al Pokémon le ha dado tiempo de escaparse.');
+        return message.channel.send('Tardaste mucho tiempo en escribir, por lo tanto al Pokémon le ha dado tiempo de escaparse');
       }
       let answer = attempts.content.toLowerCase();
       if (answer === pokem.name.toLowerCase()) {
@@ -36,7 +36,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         return msg.channel.send(`Bien hecho, **${pokem.name[0].toUpperCase()}${pokem.name.slice(1)}** fue atrapado!`);
       }
       await msg.edit({ embed: { color: 0xc82828, title: '<:pokemonLeft:600412308912734262> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
-      return msg.channel.send('Oops, te has equivocado y el Pokémon se escapó.');
+      return msg.channel.send('Oops, te has equivocado y el Pokémon se escapó');
     } catch (e) {
       client.err({
         type: 'command',

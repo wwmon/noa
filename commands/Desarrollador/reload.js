@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'reload',
-      description: 'Recarga todos los comandos o uno en específico.',
+      description: 'Recarga todos los comandos o uno en específico',
       usage: prefix => `\`${prefix}reload [comando]\``,
       examples: prefix => `\`${prefix}reload\n${prefix}reload blacklist\``,
       enabled: true,

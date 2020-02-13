@@ -22,7 +22,7 @@ let readdir = require('util').promisify(require('fs').readdir),
       Events.forEach(ev => {
         ev = ev.split('.');
         client.on(ev[0], (...args) => new (require(`./events/discord/${ev[0]}.js`))(client).run(...args));
-        console.log(`[E] El evento ${ev[0]} cargó con éxito.`);
+        console.log(`[E] El evento ${ev[0]} cargó con éxito`);
       });
       let login = await client.login(client.config.token),
         connect = await require('mongoose').connect(client.config.mongo, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -31,7 +31,7 @@ let readdir = require('util').promisify(require('fs').readdir),
       if (connect) console.log('¡Conectando con la base de datos!');
       else console.log('Ha ocurrido un error conectando con la base de datos');
       client.dbl = dbl;
-      return 'La configuración inicial del bot ha cargado con éxito.';
+      return 'La configuración inicial del bot ha cargado con éxito';
     } catch (e) {
       console.error(e);
     }
@@ -42,7 +42,7 @@ let readdir = require('util').promisify(require('fs').readdir),
       DBLEvents.forEach(ev => {
         ev = ev.split('.');
         dbl.webhook.on(ev[0], (...args) => new (require(`./events/dbl/${ev[0]}.js`))(client).run(...args));
-        console.log(`[D] El evento ${ev[0]}DBL cargó con éxito.`);
+        console.log(`[D] El evento ${ev[0]}DBL cargó con éxito`);
       });
       app
         .set('view engine', 'ejs')
@@ -50,12 +50,12 @@ let readdir = require('util').promisify(require('fs').readdir),
         .use(express.static(__dirname + '/web')) // Carga el directorio raíz
         .use(express.static(__dirname + '/web/css')) // Carga el directorio que contiene los CSS
         .get('/', (req, res) => res.render('index', { client })) // Directorio principal
-        .get('/support', (q, s) => s.redirect(client.config.support)) // Redirección support
-        .get('/invite', (q, s) => s.redirect(client.config.invite)) // Redirección invite
-        .get('/dbl', (q, s) => s.redirect(client.config.dbl)) // Redirección dbl
-        .get('/vote', (q, s) => s.redirect(client.config.vote)) // Redirección dbl vote
-        .get('/github', (q, s) => s.redirect(client.config.github)) // Redirección github
-        .get('/donate', (q, s) => s.redirect(client.config.donate)) // Redirección buymeacoffee
+        .get('/support', (q, s) => s.redirect('https://discordapp.com/invite/wyVHNYc')) // Redirección support
+        .get('/invite', (q, s) => s.redirect('https://discordapp.com/oauth2/authorize?client_id=477950798949646336&scope=bot&permissions=2146958847')) // Redirección invite
+        .get('/dbl', (q, s) => s.redirect('https://top.gg/bot/477950798949646336')) // Redirección dbl
+        .get('/vote', (q, s) => s.redirect('https://top.gg/bot/477950798949646336/vote')) // Redirección dbl vote
+        .get('/github', (q, s) => s.redirect('https://github.com/wwmon/noa')) // Redirección github
+        .get('/donate', (q, s) => s.redirect('https://buymeacoff.ee/noa')) // Redirección buymeacoffee
         .use((req, res, next) => res.status(404).render('404')); // 404 not found
       server.listen(port, () => {
         console.log(`Escuchando en ${port}`);

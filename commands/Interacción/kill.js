@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'kill',
-      description: 'Demuestra tu lado oscuro y deshaogate con alguien, acabando con su vida.',
+      description: 'Demuestra tu lado oscuro y deshaogate con alguien, acabando con su vida',
       usage: prefix => `\`${prefix}kill <@usuario>\``,
       examples: prefix => `\`${prefix}\``,
       enabled: true,

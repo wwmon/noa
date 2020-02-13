@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'pixelate',
-      description: 'Genera un filtro de imagen que vuelve pixelado un avatar.',
+      description: 'Genera un filtro de imagen que vuelve pixelado un avatar',
       usage: prefix => `\`${prefix}pixelate [@usuario]\``,
       examples: prefix => `\`${prefix}pixelate\``,
       enabled: true,

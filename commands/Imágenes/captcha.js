@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'captcha',
-      description: 'Genera una imagen para resolver un captcha con el avatar de un usuario.',
+      description: 'Genera una imagen para resolver un captcha con el avatar de un usuario',
       usage: prefix => `\`${prefix}captcha [@usuario]\``,
       examples: prefix => `\`${prefix}captcha\``,
       enabled: true,

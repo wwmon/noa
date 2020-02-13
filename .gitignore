@@ -419,3 +419,4 @@ output/
 tmp/nanoc/
 crash.log
 shrinkwrap.yaml
+config.js

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'ping',
-      description: 'Revisa la latencia del bot y la API.',
+      description: 'Revisa la latencia del bot y la API',
       usage: prefix => `\`${prefix}ping\``,
       examples: prefix => `\`${prefix}ping\``,
       enabled: true,
@@ -20,24 +20,24 @@ module.exports = class command extends require('../../base/models/Command.js') {
         embed.setDescription('Analizando resultados, por favor espere unos segundos...').setColor(client.fns.selectColor('lightcolors'));
         let m = await message.channel.send({ embed });
         if (message.guild) {
-          embed.setAuthor(`| Ping del ${require('../../config').bot}`, client.user.displayAvatarURL());
+          embed.setAuthor(`Latencia de ${client.config.bot}`, client.user.displayAvatarURL());
           if (ping >= 299) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms.`).setColor('RED');
+            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('RED');
             await m.edit({ embed });
           } else if (ping >= 200) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms.`).setColor('RED');
+            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('RED');
             await m.edit({ embed });
           } else if (ping >= 150) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms.`).setColor('ORANGE');
+            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('ORANGE');
             await m.edit({ embed });
           } else if (ping >= 100) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms.`).setColor('ORANGE');
+            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('ORANGE');
             await m.edit({ embed });
           } else if (ping >= 50) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms.`).setColor('GREEN');
+            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('GREEN');
             await m.edit({ embed });
           } else if (ping < 49) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms.`).setColor('GREEN');
+            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('GREEN');
             await m.edit({ embed });
           }
         }

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'hentai',
-      description: 'Genera hentai al azar, puede ser de cualquier tipo o categoría.',
+      description: 'Genera hentai al azar, puede ser de cualquier tipo o categoría',
       usage: prefix => `\`${prefix}hentai\``,
       examples: prefix => `\`${prefix}\``,
       enabled: true,

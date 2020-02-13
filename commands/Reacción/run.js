@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'run',
-      description: 'Empieza a correr como si no hubiese un mañana.',
+      description: 'Empieza a correr como si no hubiese un mañana',
       usage: prefix => `\`${prefix}run\``,
       examples: prefix => `\`${prefix}run\``,
       enabled: true,

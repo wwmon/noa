@@ -21,7 +21,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (message.mentions.users.first() === message.author || !message.mentions.users.first()) {
         embed
           .setColor(client.fns.selectColor('lightcolors'))
-          .setDescription('**' + message.author.username + '** se corrió... O al menos lo intenta.')
+          .setDescription('**' + message.author.username + '** se corrió... O al menos lo intenta')
           .setImage(client.fns.gifs(this.help.name));
         message.channel.send({ embed });
         return;

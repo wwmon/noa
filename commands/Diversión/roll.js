@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'roll',
-      description: 'Lanza un dado y obtén un número al azar.',
+      description: 'Lanza un dado y obtén un número al azar',
       usage: prefix => `\`${prefix}roll\``,
       examples: prefix => `\`${prefix}roll\``,
       enabled: true,

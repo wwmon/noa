@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'setprefix',
-      description: 'Cambia el prefijo del servidor.',
+      description: 'Cambia el prefijo del servidor',
       usage: prefix => `\`${prefix}setprefix <prefijo>\``,
       examples: prefix => `\`${prefix}setprefix !!\``,
       enabled: true,

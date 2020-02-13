@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'djs',
-      description: 'Obten resultados relacionados con Discord.js-master de la documentación oficial.',
+      description: 'Obten resultados relacionados con Discord.js-master de la documentación oficial',
       usage: prefix => `\`${prefix}djs <búsqueda>\``,
       examples: prefix => `\`${prefix}djs message#\``,
       enabled: true,

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'triggered',
-      description: 'Genera un GIF con un avatar aplicándole el efecto triggered.',
+      description: 'Genera un GIF con un avatar aplicándole el efecto triggered',
       usage: prefix => `\`${prefix}triggered [@usuario]\``,
       examples: prefix => `\`${prefix}triggered\``,
       enabled: false,

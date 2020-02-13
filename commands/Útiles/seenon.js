@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'seenon',
-      description: 'Listado de servidores compartidos con ' + require('../../config').bot + '.',
+      description: 'Listado de servidores compartidos con ' + require('../../config').bot,
       usage: prefix => `\`${prefix}seenon [@usuario]\``,
       examples: prefix => `\`${prefix}seenon @Oso#4922\``,
       enabled: true,
@@ -18,20 +18,20 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       if (!args[0]) {
-        return message.channel.send('Necesitas mencionar a un usuario.');
+        return message.channel.send('Necesitas mencionar a un usuario');
       } else {
         if (!isNaN(args[0])) {
           try {
             return await send(await client.users.fetch(args[0]));
           } catch {
-            return message.channel.send('Esa id no pertenece a ningún usuario.');
+            return message.channel.send('Esa id no pertenece a ningún usuario');
           }
         }
         if (message.mentions.users.size > 0) return await send(message.mentions.users.first());
         let u = message.guild.members.cache.array().filter(x => `${x.user.tag}||${x.displayName}`.toLowerCase().includes(args[0].toLowerCase()));
-        if (u.length <= 0) return message.channel.send('No hay usuarios que coincidan con tu búsqueda, intenta ser más específico.');
+        if (u.length <= 0) return message.channel.send('No hay usuarios que coincidan con tu búsqueda, intenta ser más específico');
         else if (u.length === 1) return await send(u[0].user);
-        else if (u.length > 10) return message.channel.send('Muchos usuarios coinciden con tu búsqueda, intenta ser más específico.');
+        else if (u.length > 10) return message.channel.send('Muchos usuarios coinciden con tu búsqueda, intenta ser más específico');
         else {
           let m = 'Selecciona un número entre 1 y ' + u.length + '```';
           for (let x = 0; x < u.length; x++) {
@@ -41,7 +41,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
             i = await message.channel.awaitMessages(m => m.author.id === message.author.id && m.content > 0 && m.content < u.length + 1, { max: 1, time: 30000 });
           i = await i.first();
           if (!i) {
-            message.channel.send('Cancelando, no se recibió respuesta.');
+            message.channel.send('Cancelando, no se recibió respuesta');
             msg.delete({ timeout: 5000 });
           } else {
             await send(u[i.content - 1].user);
@@ -58,7 +58,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setAuthor(`Servidores en común de ${user.tag}`, user.displayAvatarURL())
           .setDescription(`\n\n${searching.length > 2048 ? searching.slice(0, 2000) + '\n...' : searching}`)
           .setColor(client.fns.selectColor('lightcolors'))
-          .setFooter(`Un total de ${client.guilds.cache.filter(g => g.members.has(user.id)).size} servidores.`);
+          .setFooter(`Un total de ${client.guilds.cache.filter(g => g.members.has(user.id)).size} servidores`);
         message.channel.send({ embed });
       }
     } catch (e) {

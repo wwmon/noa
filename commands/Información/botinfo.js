@@ -3,7 +3,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'botinfo',
-      description: 'Muestra estadísticas sobre el bot.',
+      description: 'Muestra estadísticas sobre el bot',
       usage: prefix => `\`${prefix}botinfo\``,
       examples: prefix => `\`${prefix}botinfo\``,
       enabled: true,

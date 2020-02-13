@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'grayscale',
-      description: 'Genera un filtro de imagen, el cual pone de tono gris tu avatar.',
+      description: 'Genera un filtro de imagen, el cual pone de tono gris tu avatar',
       usage: prefix => `\`${prefix}grayscale [@usuario]\``,
       examples: prefix => `\`${prefix}grayscale\``,
       enabled: true,

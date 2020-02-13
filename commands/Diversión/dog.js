@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'dog',
-      description: 'Se encarga de buscar perros hermosos. 🐶\n> **Parámetros:**\n~ `--shiba`: Genera un perro raza Shiba.\n~ `--husky`: Genera un perro raza Husky.\n~ `--boxer`: Genera un perro raza Boxer.\n~ `--dalmata` | `--dalmatian`: Genera un perro Dálmata.\n~ `--chihuaha`: Genera un perrito Chihuahua.',
+      description: 'Se encarga de buscar perros hermosos 🐶\n> **Parámetros:**\n~ `--shiba`: Genera un perro raza Shiba\n~ `--husky`: Genera un perro raza Husky.\n~ `--boxer`: Genera un perro raza Boxer.\n~ `--dalmata` | `--dalmatian`: Genera un perro Dálmata.\n~ `--chihuaha`: Genera un perrito Chihuahua',
       usage: prefix => `\`${prefix}dog\``,
       examples: prefix => `\`${prefix}dog --shiba\``,
       enabled: true,

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'sepia',
-      description: 'Genera una imagen con un avatar y un efecto sepia.',
+      description: 'Genera una imagen con un avatar y un efecto sepia',
       usage: prefix => `\`${prefix}sepia [@usuario]\``,
       examples: prefix => `\`${prefix}sepia\``,
       enabled: true,

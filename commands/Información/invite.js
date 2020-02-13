@@ -22,7 +22,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .setDescription('Veo que estas interesado por agregarme a tu servidor >.<\n¡Por aquí abajito te dejo algunos enlaces para que me puedas invitar!')
         .addField('<:DBL:489519574698426369> Discord Bot List', '[¡Clic aquí!](https://noa.wwmon.xyz/dbl)', true)
         .addField('🔗 Enlace Directo', '[¡Clic aquí!](https://noa.wwmon.xyz/invite)', true)
-        .setFooter(client.config.bot + ' | Recuerda que para invitarme necesitas tener el permiso de: Administrar el servidor.', message.author.displayAvatarURL());
+        .setFooter(client.config.bot + ' | Recuerda que para invitarme necesitas tener el permiso de: Administrar el servidor', message.author.displayAvatarURL());
       message.channel.send({ embed });
     } catch (e) {
       client.err({

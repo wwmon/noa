@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'credits',
-      description: 'Muestra todos los usuarios honoríficos que contribuyeron por ' + require('../../config').bot + '.',
+      description: 'Muestra todos los usuarios honoríficos que contribuyeron por ' + require('../../config').bot,
       usage: prefix => `\`${prefix}credits\``,
       examples: prefix => `\`${prefix}credits\``,
       enabled: true,

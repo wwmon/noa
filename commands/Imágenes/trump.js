@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'trump',
-      description: 'Genera una imagen donde Donald Trump establece una ley.',
+      description: 'Genera una imagen donde Donald Trump establece una ley',
       usage: prefix => `\`${prefix}trump <texto>\``,
       examples: prefix => `\`${prefix}trump Tercera guerra mundial.\``,
       enabled: true,

@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'kuni',
-      description: 'Genera un gifs NSFW donde se muestra el acto de hacer un beso negro / lamer la parte de la mujer.',
+      description: 'Genera un gifs NSFW donde se muestra el acto de hacer un beso negro / lamer la parte de la mujer',
       usage: prefix => `\`${prefix}kuni\``,
       examples: prefix => `\`${prefix}\``,
       enabled: true,

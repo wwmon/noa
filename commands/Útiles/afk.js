@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'afk',
-      description: 'Utilizalo cuando te pongas en estado ausente para que los demás sepan que no estás disponible.',
+      description: 'Utilizalo cuando te pongas en estado ausente para que los demás sepan que no estás disponible',
       usage: prefix => `\`${prefix}afk [motivo]\``,
       examples: prefix => `\`${prefix}afk Durmiendo 💤\``,
       enabled: true,

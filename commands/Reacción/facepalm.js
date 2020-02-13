@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'facepalm',
-      description: 'Date un palmada en el cara como muestra de tu decepción.',
+      description: 'Date un palmada en el cara como muestra de tu decepción',
       usage: prefix => `\`${prefix}facepalm\``,
       examples: prefix => `\`${prefix}facepalm\``,
       enabled: true,

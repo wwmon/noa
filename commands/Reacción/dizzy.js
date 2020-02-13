@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'dizzy',
-      description: 'Expresa tu mareo.',
+      description: 'Expresa tu mareo',
       usage: prefix => `\`${prefix}dizzy\``,
       examples: prefix => `\`${prefix}dizzy\``,
       enabled: true,

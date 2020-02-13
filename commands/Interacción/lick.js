@@ -19,7 +19,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (message.mentions.users.first() === message.author) {
         return message.channel.send('No quiero lamerte *- Vomita -*');
       }
-      if (message.mentions.users.first() == client.user) return message.channel.send('No me gusta ser lamida por otros.');
+      if (message.mentions.users.first() == client.user) return message.channel.send('No me gusta ser lamida por otros');
       if (message.mentions.users.size < 1) return message.channel.send('Te veo muy ansioso... Menciona a alguien *- Saca la lengua -*');
       embed
         .setColor(client.fns.selectColor('lightcolors'))

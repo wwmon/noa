@@ -18,7 +18,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
     try {
       if (message.mentions.users.first() === message.author) return message.channel.send('¿C-crees que puedes hacerte mala cara a ti solo?...');
       if (message.mentions.users.first() === client.user) return message.channel.send('¿Enserio quieres hacerme esto? T-T');
-      if (message.mentions.users.size < 1) return message.channel.send('Menciona a la persona que le harás mala cara.');
+      if (message.mentions.users.size < 1) return message.channel.send('Menciona a la persona que le harás mala cara');
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** le hizo una mala cara a **' + message.mentions.users.first().username + '**')

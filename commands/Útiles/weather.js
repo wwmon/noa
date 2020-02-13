@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'weather',
-      description: 'Revisa el clima de algún lugar del mundo.',
+      description: 'Revisa el clima de algún lugar del mundo',
       usage: prefix => `\`${prefix}weather <zona>\``,
       examples: prefix => `\`${prefix}weather Los Ángeles\``,
       enabled: true,
@@ -17,12 +17,12 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       if (!args[0]) {
-        return message.channel.send(`**${message.author.username}**, por favor ingresa una ciudad o región para obtener su clima.`);
+        return message.channel.send(`**${message.author.username}**, por favor ingresa una ciudad o región para obtener su clima`);
       } else {
         require('weather-js').find({ search: args.join(' '), degreeType: 'C' }, (err, result) => {
           if (err) message.channel.send(err);
           if (result === undefined || result.length === 0) {
-            message.channel.send('Debes ingresar un lugar válido.');
+            message.channel.send('Debes ingresar un lugar válido');
             return;
           }
           let current = result[0].current,

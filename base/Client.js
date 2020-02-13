@@ -23,7 +23,7 @@ module.exports = class client extends Client {
   loadCommand(commandPath, commandName) {
     try {
       let props = new (require(`.${commandPath}${require('path').sep}${commandName}`))(this);
-      console.log(`[C] El comando ${props.help.name} cargó con éxito.`);
+      console.log(`[C] El comando ${props.help.name} cargó con éxito`);
       props.config.location = commandPath;
       if (props.init) {
         props.init(this);
