@@ -25,7 +25,6 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .setDescription('...')
         .setImage(img.body.url);
       message.channel.send({ embed });
-      
     } catch (e) {
       client.err({
         type: 'command',

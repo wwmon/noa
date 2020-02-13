@@ -27,7 +27,6 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setTitle('🗣 Traductor')
           .addField('Texto original', args.slice(1).join(' '))
           .addField('Texto traducido', res.text);
-        
         message.channel.send({ embed });
       });
     } catch (e) {

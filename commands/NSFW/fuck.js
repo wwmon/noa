@@ -29,7 +29,6 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .setDescription('**' + message.author.username + '** se folló a **' + message.mentions.users.first().username + '**')
         .setImage(img.body.url);
       message.channel.send({ embed });
-      
     } catch (e) {
       client.err({
         type: 'command',

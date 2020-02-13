@@ -16,7 +16,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       let img = await require('node-superfetch').get('http://random.birb.pw/tweet/'),
-      msg = await message.channel.send(client.fns.reply('generating', message));
+        msg = await message.channel.send(client.fns.reply('generating', message));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setAuthor('¡Pío Pío! |⁰⊖⁰)', 'https://i.imgur.com/E8fKH5q.png')

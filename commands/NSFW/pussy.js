@@ -24,7 +24,6 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('...')
         .setImage(img.body.url);
-      
       message.channel.send({ embed });
     } catch (e) {
       client.err({

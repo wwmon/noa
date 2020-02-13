@@ -7,8 +7,8 @@
 
 ## Enlaces útiles
 
-* [Servidor de soporte](https://noa.wwmon.xyz/support)
-* [Página web](https://noa.wwmon.xyz/)
-* [Página de votos](https://noa.wwmon.xyz/)
-* [GitHub](https://noa.wwmon.xyz/github)
-* [top.gg](https://noa.wwmon.xyz/dbl)
+- [Servidor de soporte](https://noa.wwmon.xyz/support)
+- [Página web](https://noa.wwmon.xyz/)
+- [Página de votos](https://noa.wwmon.xyz/)
+- [GitHub](https://noa.wwmon.xyz/github)
+- [top.gg](https://noa.wwmon.xyz/dbl)
