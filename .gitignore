@@ -992,11 +992,6 @@ tmp/nanoc/
 
 # Crash Log
 crash.log
-<<<<<<< HEAD
-shrinkwrap.yaml
-config.js
-=======
-
 # End of https://www.gitignore.io/api/nanoc
 # ------------------------------------------------------
 
@@ -1004,4 +999,3 @@ config.js
 shrinkwrap.yaml
 .glitch-assets
 config.js
->>>>>>> f3c47f0014a55308806156edc7b564205af324e8

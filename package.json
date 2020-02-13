@@ -4,7 +4,7 @@
   "description": "Noa Discord Bot",
   "main": "index.js",
   "scripts": {
-    "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 index.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "12.x"
@@ -17,7 +17,6 @@
     "cpu-stat": "^2.0.1",
     "dblapi.js": "^2.3.1",
     "discord.js": "github:discordjs/discord.js#master",
-    "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "gif-search": "^2.1.0",
