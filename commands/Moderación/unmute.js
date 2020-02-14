@@ -26,7 +26,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (pedir === message.author) return message.channel.send(client.fns.tryingAutoInfract(message));
       if (pedir == client.user) return message.channel.send(`No puede hacer esto sobre mi, intenta con otro`);
 
-      let mutedrole = mUser.roles.find(`name`, 'Silenciado');
+      let mutedrole = mUser.roles.cache.find(`name`, 'Silenciado');
 
       if (!message.guild.member(mUser).bannable) return message.channel.send(`No puedo quita el silencio al usuario mencionado. Es posible que no tenga el rango requerido o el usuario es superior a mí`);
 

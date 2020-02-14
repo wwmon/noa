@@ -19,7 +19,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
     try {
       embed.setColor(client.fns.selectColor('lightcolors'));
       let emoji = /((:|<:|<a:)((\w{1,64}:\d{17,18})|(\w{1,64}))(:|>))|(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/gi.exec(args.join(' '));
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs necesitas proporcionar alguna opción', usage: this.help.usage(message.prefix), message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas proporcionar alguna opción', usage: this.help.usage(message.prefix), message }));
       else if (args[0].toLowerCase() === '--lista' || args[0].toLowerCase() === '--list') {
         embed.setTitle('Emotes del servidor');
         let nitro = message.guild.emojis.cache.filter(e => e.animated === true),
@@ -54,22 +54,22 @@ module.exports = class command extends require('../../base/models/Command.js') {
           message.channel.send({ embed: embedd });
         }
       } else if (args[0].toLowerCase() === 'add' || args[0].toLowerCase() === 'agregar') {
-        if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.fns.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
+        if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
           if (!args[1]) message.channel.send('Necesitas elegir el nombre para el emoji a agregar');
           else {
             let create;
             try {
-              create = await message.guild.emojis.create(message.attachments.first() ? message.attachments.first().url : args[2] ? args[2] : 'awawa', args[1], `Acción cometida desde un comando por: ${message.author.tag}`);
+              create = await message.guild.emojis.cache.create(message.attachments.first() ? message.attachments.first().url : args[2] ? args[2] : 'awawa', args[1], `Acción cometida desde un comando por: ${message.author.tag}`);
             } catch {
-              return message.channel.send(client.fns.message({ emoji: 'red', razón: 'parece que no pusiste bien la imagen o ya no hay más espacio para emojis', message }));
+              return message.channel.send(client.message({ emoji: 'red', razón: 'parece que no pusiste bien la imagen o ya no hay más espacio para emojis', message }));
             }
             message.channel.send(`El emote \`:${args[1]}:\` fue agregado correctamente ${create.toString()}`);
           }
         }
         return;
       } else if (args[0].toLowerCase() === 'remove' || args[0].toLowerCase() === 'remover') {
-        if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.fns.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
+        if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
           if (!args[1]) message.channel.send('Necesitas especificar un emoji para borrar');
           let emoji1 = message.guild.emojis.cache.get(args[0]) || message.guild.emojis.cache.find(x => x.name.includes(args[1])) || message.guild.emojis.cache.find(x => x.toString() === args[1]);
@@ -100,7 +100,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         }
         return;
       } else if (args[0].toLowerCase() === 'rename' || args[0].toLowerCase() === 'renombrar') {
-        if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.fns.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
+        if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
           if (!args[1]) return message.channel.send('Necesitas especificar un emoji para renombrar');
           let emoji1 = message.guild.emojis.cache.get(args[0]) || message.guild.emojis.cache.find(x => x.name.includes(args[1])) || message.guild.emojis.cache.find(x => x.toString() === args[1]);

@@ -21,7 +21,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       else if (args[0].toLowerCase() === '--lista' || args[0].toLowerCase() === '--list') {
         embed.setColor(client.fns.selectColor('lightcolors'));
         if (message.guild.roles.cache.size < 1) return message.channel.send('Este servidor no tienen ningún rol creado');
-        let roles = message.guild.roles
+        let roles = message.guild.roles.cache
             .sort((a, b) => b.position - a.position)
             .filter(r => r.id !== message.guild.roles.cache.everyone.id)
             .map(r => `• ${r.name}`),
@@ -73,7 +73,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setColor(role.color)
           .addField('Nombre', `${role.toString()} \`[${role.name}]\``)
           .addField('ID', role.id, true)
-          .addField('Usuarios con el rol', role.members.size, true)
+          .addField('Usuarios con el rol', role.members.cache.size, true)
           .addField('Posición', role.position, true)
           .addField('Color', role.hexColor, true)
           .addField('Separado', role.hoist ? 'Sí' : 'No', true)

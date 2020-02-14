@@ -22,7 +22,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (!member || !args[0]) return message.channel.send('Mencioná al usuario que debo silenciar');
       if (member === message.member) return message.channel.send(client.fns.tryingAutoInfract(message));
       if (member === message.guild.me) return message.channel.send('No puedo auto-silenciarme, intenta con alguien más');
-      if (!member.roles.highest.comparePositionTo(message.guild.me.roles.highest) > 0) return message.channel.send('No puedo silenciar al usuario mencionado. Es posible que no tenga el rango requerido o el usuario es superior a mí');
+      if (!member.roles.highest.comparePositionTo(message.guild.me.roles.cache.highest) > 0) return message.channel.send('No puedo silenciar al usuario mencionado. Es posible que no tenga el rango requerido o el usuario es superior a mí');
       let role = message.guild.roles.cache.get(data.guild.moderation.mute.role),
         reason = args.slice(1).join(' ');
       if (role) {

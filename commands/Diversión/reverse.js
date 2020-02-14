@@ -15,7 +15,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send('Escribe el texto para repetirlo de reversa');
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe el texto para ponerlo al revés', usage: this.help.usage(message.prefix), message }));
       else {
         let sreverse = args
           .join()
@@ -31,11 +31,11 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send({ embed });
       }
     } catch (e) {
-      message.channel.send(message.error(e));
       client.err({
         type: 'command',
         name: this.help.name,
-        error: e
+        error: e,
+        message
       });
     }
   }

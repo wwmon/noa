@@ -56,25 +56,25 @@ module.exports = class event {
         let expirationTime = timestamps.get(message.author.id) + cooldownAmount;
         if (now < expirationTime) {
           let timeLeft = (expirationTime - now) / 1000;
-          let msg = await message.channel.send(client.fns.message({ emoji: 'red', razón: `por favor espera ${timeLeft.toFixed(1)} segundo(s) antes de seguir utilizando el comando \`${cmd.help.name}\``, message }));
+          let msg = await message.channel.send(client.message({ emoji: 'red', razón: `por favor espera ${timeLeft.toFixed(1)} segundo(s) antes de seguir utilizando el comando \`${cmd.help.name}\``, message }));
           return;
         }
       }
       timestamps.set(message.author.id, now);
       setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-      if (data.user.blacklist.bl === true) return message.channel.send(client.fns.message({ emoji: 'red', razón: `¡estás en lista negra del bot! Si crees que esto es un error, dirígete al servidor de soporte <https://noa.wwmon.xyz/support>`, message }));
+      if (data.user.blacklist.bl === true) return message.channel.send(client.message({ emoji: 'red', razón: `¡estás en lista negra del bot! Si crees que esto es un error, dirígete al servidor de soporte <https://noa.wwmon.xyz/support>`, message }));
       if (!cmd.config.botPermissions.includes('SEND_MESSAGES' || 'EMBED_LINKS')) cmd.config.botPermissions.push('SEND_MESSAGES', 'EMBED_LINKS');
-      if (!cmd.config.enabled) return message.channel.send(client.fns.message({ emoji: 'red', razón: 'este comando no se encuentra habilitado', message }));
-      if (cmd.help.category === 'Moderación' && !client.config.owners.includes(message.author.id)) return message.channel.send(client.fns.message({ emoji: 'red', razón: 'el módulo de moderación está deshabilitado por el momento', message }));
-      if (cmd.config.ownerOnly === true && !client.config.owners.includes(message.author.id)) return message.channel.send(client.fns.message({ emoji: 'red', razón: 'el comando solo puede ser utilizado por un desarrollador', message }));
-      if (cmd.config.guildOnly === true && !message.guild) return message.channel.send(client.fns.message({ emoji: 'red', razón: 'este comando está destinado para ser utilizado en un servidor', message }));
+      if (!cmd.config.enabled) return message.channel.send(client.message({ emoji: 'red', razón: 'este comando no se encuentra habilitado', message }));
+      if (cmd.help.category === 'Moderación' && !client.config.owners.includes(message.author.id)) return message.channel.send(client.message({ emoji: 'red', razón: 'el módulo de moderación está deshabilitado por el momento', message }));
+      if (cmd.config.ownerOnly === true && !client.config.owners.includes(message.author.id)) return message.channel.send(client.message({ emoji: 'red', razón: 'el comando solo puede ser utilizado por un desarrollador', message }));
+      if (cmd.config.guildOnly === true && !message.guild) return message.channel.send(client.message({ emoji: 'red', razón: 'este comando está destinado para ser utilizado en un servidor', message }));
       if (cmd.config.nsfwOnly === true && !message.channel.nsfw) {
         let img = await require('node-superfetch').get('https://nekos.life/api/v2/img/meow'),
           attach = new (require('discord.js').MessageAttachment)(img.body.url, 'meow.png');
-        message.channel.send(client.fns.message({ emoji: 'red', razón: 'antes de volvernos locos, dirígete a un canal NSFW, por mientras te dejo un gatito', message }), { files: [attach] });
+        message.channel.send(client.message({ emoji: 'red', razón: 'antes de volvernos locos, dirígete a un canal NSFW, por mientras te dejo un gatito', message }), { files: [attach] });
         return;
       }
-      if (cmd.config.voteOnly && !(await client.dbl.hasVoted(message.author.id))) return message.channel.send(client.fns.message({ emoji: 'red', razón: `necesitas votar por ${client.config.bot} en \`top.gg\` para tener acceso a este comando. <https://noa.wwmon.xyz/vote/>`, message }));
+      if (cmd.config.voteOnly && !(await client.dbl.hasVoted(message.author.id))) return message.channel.send(client.message({ emoji: 'red', razón: `necesitas votar por ${client.config.bot} en \`top.gg\` para tener acceso a este comando. <https://noa.wwmon.xyz/vote/>`, message }));
       if (message.guild) {
         let a = [];
         cmd.config.memberPermissions.forEach(p => {
@@ -82,7 +82,7 @@ module.exports = class event {
             a.push(p);
           }
         });
-        if (a.length > 0) return message.channel.send(client.fns.message({ emoji: 'red', razón: `necesitas los siguientes permisos para usar este comando: ${a.map(p => `\`${p}\``).join('`, `')}`, message }));
+        if (a.length > 0) return message.channel.send(client.message({ emoji: 'red', razón: `necesitas los siguientes permisos para usar este comando: ${a.map(p => `\`${p}\``).join('`, `')}`, message }));
         a = [];
         cmd.config.botPermissions.forEach(p => {
           if (!message.channel.permissionsFor(message.guild.me).has(p)) {
@@ -90,7 +90,7 @@ module.exports = class event {
           }
         });
 
-        if (a.length > 0) return message.channel.send(client.fns.message({ emoji: 'red', razón: `necesito los siguientes permisos para usar este comando: ${a.map(p => `\`${p}\``).join('`, `')}`, message }));
+        if (a.length > 0) return message.channel.send(client.message({ emoji: 'red', razón: `necesito los siguientes permisos para usar este comando: ${a.map(p => `\`${p}\``).join('`, `')}`, message }));
       }
       try {
         cmd.run(message, args, data, embed);

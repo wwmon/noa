@@ -23,30 +23,21 @@ module.exports = class client extends Client {
   loadCommand(commandPath, commandName) {
     try {
       let props = new (require(`.${commandPath}${require('path').sep}${commandName}`))(this);
-      console.log(`[C] El comando ${props.help.name} cargó con éxito`);
       props.config.location = commandPath;
-      if (props.init) {
-        props.init(this);
-      }
+      if (props.init) props.init(this);
       this.commands.set(props.help.name, props);
-      props.config.aliases.forEach(alias => {
-        this.aliases.set(alias, props.help.name);
-      });
-      return false;
+      props.config.aliases.forEach(alias => this.aliases.set(alias, props.help.name));
+      return `Comando ${props.help.name} cargado`;
     } catch (e) {
       console.error(e);
-      return `[ERR] No se pudo cargar el comando: ${commandName} Error: ${e}`;
+      return `Error cargando comando ${commandName}`;
     }
   }
   /* Descarga un comando para 'relodearlo' */
   async unloadCommand(commandPath, commandName) {
     let command;
-    if (this.commands.has(commandName)) {
-      command = this.commands.get(commandName);
-    } else if (this.aliases.has(commandName)) {
-      command = this.commands.get(this.aliases.get(commandName));
-    }
-    if (!command) return `El comando \`${commandName}\` no existe. ¡Intentalo de nuevo!`;
+    if (this.commands.has(commandName)) command = this.commands.get(commandName);
+    else if (this.aliases.has(commandName)) command = this.commands.get(this.aliases.get(commandName));
     if (command.shutdown) await command.shutdown(this);
     delete require.cache[require.resolve(`.${commandPath}${require('path').sep}${commandName}.js`)];
     return false;
@@ -55,13 +46,38 @@ module.exports = class client extends Client {
   err(data) {
     let embed = new MessageEmbed().setColor(this.fns.selectColor('lightcolors')).setDescription(`\`\`\`js\n${data.error}\n\`\`\``);
     if (data.type === 'command') {
-      data.message.channel.send(this.fns.message({ emoji: 'red', razón: `ha ocurrido un error\nPor favor repórtalo en mi servidor de soporte <https://noa.wwmon.xyz/support>`, message: data.message }));
+      data.message.channel.send(this.message({ emoji: 'red', razón: `ha ocurrido un error\nPor favor repórtalo en mi servidor de soporte <https://noa.wwmon.xyz/support>`, message: data.message }));
       embed.setTitle(`\`comando\`: Error en \`${data.name}\``);
     } else if (data.type === 'event') {
       embed.setTitle(`\`evento\`: Error en \`${data.name}\``);
     }
     this.logs.send(embed);
     console.error(data.error);
+  }
+  message(data) {
+    /*
+    client.message({ emoji: 'green|gray|red', razón: 'noargs|message', usage: this.help.usage(message.prefix), message })
+    no args
+    client.message({ emoji: 'red', razón: 'noargs', usage: this.help.usage(message.prefix), message })
+    */
+    let message = data.message,
+      emoji = data.emoji,
+      razón = data.razón,
+      s = '',
+      noargs = ['faltan argumentos', 'parece que te faltan palabras', 'creo que se te han perdido argumentos'];
+    emoji = emoji.toLowerCase();
+    razón = razón.split(/ +/g);
+    if (emoji === 'green') s += '<:au_MiscGreenTick:599396703732498452>';
+    else if (emoji === 'gray') s += '<:au_MiscGrayTick:599396703774310419>';
+    else if (emoji === 'red') s += '<:au_MiscRedTick:599396704193740838>';
+    else if (emoji === 'heart') s += ['❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟'][Math.floor(Math.random() * 16)];
+    else if (emoji === 'noidea') s += ['🥴', '😕', '🙄'][Math.floor(Math.random() * 3)];
+    else if (emoji === 'sad') s += ['😞', '😔', '😟', '🙁', '😣', '😫', '😦', '😧', '😪'][Math.floor(Math.random() * 9)];
+    else s += emoji;
+    s += ' ~ **' + message.author.username + '**, ';
+    if (razón[0].toLowerCase() === 'noargs') {
+      return (s += (razón[1] ? razón.slice(1).join(' ') + '\n' : noargs[Math.floor(Math.random() * noargs.length)] + '\n') + '> **Uso:** ' + data.usage);
+    } else return (s += razón.join(' '));
   }
   /* Encuentra o crea un usuario en la base de datos */
   async findOrCreateUser(param, isLean) {

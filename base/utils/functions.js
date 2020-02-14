@@ -34,27 +34,6 @@ module.exports = class fns {
     });
     return prefix;
   }
-  message(data) {
-    /*
-    client.fns.message({ emoji: 'green|gray|red', razón: 'noargs|message', usage: this.help.usage(message.prefix), message })
-    no args
-    client.fns.message({ emoji: 'red', razón: 'noargs', usage: this.help.usage(message.prefix), message })
-    */
-    let message = data.message,
-      emoji = data.emoji,
-      razón = data.razón,
-      s = '',
-      noargs = ['faltan argumentos', 'parece que te faltan palabras', 'creo que se te han perdido argumentos'];
-    emoji = emoji.toLowerCase();
-    razón = razón.split(/ +/g);
-    if (emoji === 'green') s += '<:au_MiscGreenTick:599396703732498452>';
-    else if (emoji === 'gray') s += '<:au_MiscGrayTick:599396703774310419>';
-    else if (emoji === 'red') s += '<:au_MiscRedTick:599396704193740838>';
-    s += ' ~ **' + message.author.username + '**, ';
-    if (razón[0].toLowerCase() === 'noargs') {
-      return (s += (razón[1] ? razón.slice(1).join(' ') + '\n' : noargs[Math.floor(Math.random() * noargs.length)] + '\n') + '> **Uso:** ' + data.usage);
-    } else return (s += razón.join(' '));
-  }
   reply(option, message) {
     let options = ['tickle', 'hug', 'tired', 'think', 'smug', 'smile', 'sleep', 'shrug', 'scream', 'run', 'nervous', 'like', 'lewd', 'hello', 'laugh', 'facepalm', 'eat', 'dizzy', 'depressed', 'dance', 'cry', 'confused', 'bye', 'bored', 'boom', 'blush', 'banghead', 'angry', 'generating', 'pokedex', 'dm'],
       reps;

@@ -19,15 +19,15 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       if (!args[0]) {
-        message.channel.send(client.fns.message({ emoji: 'green', razón: 'reiniciando bot, esto puede durar unos segundos', message }));
+        message.channel.send(client.message({ emoji: 'green', razón: 'reiniciando bot, esto puede durar unos segundos', message }));
         setTimeout(() => process.exit(), 1500);
       } else {
         let cmd = client.commands.get(args[0].toLowerCase()) || client.commands.get(client.aliases.get(args[0].toLowerCase()));
-        if (!cmd) message.channel.send(client.fns.message({ emoji: 'red', razón: 'comando no encontrado', message }));
+        if (!cmd) message.channel.send(client.message({ emoji: 'red', razón: 'comando no encontrado', message }));
         else {
           await client.unloadCommand(cmd.config.location, cmd.help.name);
           await client.loadCommand(cmd.config.location, cmd.help.name);
-          return message.channel.send(client.fns.message({ emoji: 'green', razón: 'el comando `' + cmd.help.name + '` se reinició correctamente', message }));
+          return message.channel.send(client.message({ emoji: 'green', razón: 'el comando `' + cmd.help.name + '` se reinició correctamente', message }));
         }
       }
     } catch (e) {

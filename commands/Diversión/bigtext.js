@@ -19,8 +19,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
       'abcdefghijklmnopqrstuvwxyz'.split('').forEach(c => {
         mapping[c] = mapping[c.toUpperCase()] = ` :regional_indicator_${c}:`;
       });
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs escribe un texto para agrandar', usage: this.help.usage(message.prefix), message }));
-      else if (args.length > 80) message.channel.send(client.fns.message({ emoji: 'red', razón: 'el texto no puede exceder los 80 carácters', message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe un texto para agrandar', usage: this.help.usage(message.prefix), message }));
+      else if (args.length > 80) message.channel.send(client.message({ emoji: 'red', razón: 'el texto no puede exceder los 80 carácters', message }));
       message.channel.send(
         args
           .join(' ')
