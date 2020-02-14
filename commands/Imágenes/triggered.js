@@ -17,11 +17,10 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       let msg = await message.channel.send(client.fns.reply('generating', message)),
-        img = await require('node-superfetch')
-          .get(`https://www.weez.pw/api/triggered?avatar=${(message.mentions.users.first() || message.author).displayAvatarURL({ size: 2048 })}`)
-          .set('clave', client.config.weezKey);
+        i = (message.mentions.users.first() || message.author).displayAvatarURL({ format: 'png', size: 2048 }),
+        img = await require('node-superfetch').get(`https://eclyssia-api.tk/api/v1/triggered?url=${i}`);
       msg.delete();
-      message.channel.send(new (require('discord.js').MessageAttachment)(img.body, 'img.gif'));
+      message.channel.send(new (require('discord.js').MessageAttachment)(img.raw));
     } catch (e) {
       client.err({
         type: 'command',
