@@ -5,7 +5,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       description: 'Genera un GIF con un avatar aplicándole el efecto triggered',
       usage: prefix => `\`${prefix}triggered [@usuario]\``,
       examples: prefix => `\`${prefix}triggered\``,
-      enabled: true,
+      enabled: false,
       cooldown: 10,
       aliases: [],
       botPermissions: [],
