@@ -16,12 +16,12 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('Si solamente quieres despedirte, puedes utilizar `' + message.prefix + 'bye` ^^');
-      if (message.mentions.users.first() === client.user) return message.channel.send('¿En serio me quieres decir adiós? T-T');
-      if (message.mentions.users.size < 1) return message.channel.send('D-decide a quién q-quieres decirle adiós T-T');
+      if (message.mentions.users.cache.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: `si solamente quieres despedirte usa \`${message.prefix}bye\``, usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.cache.first() === client.user) return message.channel.send(client.message({ emoji: 'sad', razón: '¿en serio quieres decirme adiós?', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.cache.size < 1) return message.channel.send(client.message({ emoji: 'sad', razón: 'noargs menciona a alguien para despedirte', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
-        .setDescription('**' + message.author.username + '** se despidió de **' + message.mentions.users.first().username + '**')
+        .setDescription('**' + message.author.username + '** se despidió de **' + message.mentions.users.cache.first().username + '**')
         .setImage(client.fns.gifs(this.help.name));
       message.channel.send({ embed });
     } catch (e) {

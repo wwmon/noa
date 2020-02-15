@@ -34,8 +34,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send({ embed });
       } else {
         let ayu = client.commands.get(args[0].toLowerCase()) || client.commands.get(client.aliases.get(args[0].toLowerCase()));
-        if (!ayu) return message.channel.send('Ese comando no existe ewe');
-        if (ayu.help.category === 'Ocultos') return message.channel.send('Ehmmm... no sé de que me estás hablando! T-te juro q-que no... sé nada... 🙄');
+        if (!ayu) return message.channel.send(client.message({ emoji: 'red', razón: 'ese comando no existe', usage: this.help.usage(message.prefix), message }))
+        if (ayu.help.category === 'Ocultos') return message.channel.send(client.message({ emoji: 'noidea', razón: 'no tengo idea de lo que estás hablando...', usage: this.help.usage(message.prefix), message }))
         if (ayu.config.cooldown === 0) ayu.config.cooldown = 2.5;
         embed
           .setTitle('Información del comando: ' + (ayu.help.name[0].toUpperCase() + ayu.help.name.slice(1)))

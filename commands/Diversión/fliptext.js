@@ -17,7 +17,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
     try {
       let mapping = '¡"#$%⅋,)(*+\'-˙/0ƖᄅƐㄣϛ9ㄥ86:;<=>¿@∀qƆpƎℲפHIſʞ˥WNOԀQɹS┴∩ΛMX⅄Z[/]^_`ɐqɔpǝɟƃɥᴉɾʞlɯuodbɹsʇnʌʍxʎz{|}~',
         OFFSET = '!'.charCodeAt(0);
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs anímate y escribe el texto que dará un giro', usage: this.help.usage(message.prefix), message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs anímate y escribe el texto que dará un giro', usage: this.help.usage(message.prefix), message }));
       else {
         message.channel.send(
           args

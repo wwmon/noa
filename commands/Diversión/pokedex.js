@@ -15,14 +15,14 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs debes proporcionar el nombre o número de un Pokémon', usage: this.help.usage(message.prefix), message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs debes proporcionar el nombre o número de un Pokémon', usage: this.help.usage(message.prefix), message }));
       else {
         let msg = await message.channel.send(client.fns.reply('pokedex', message)),
           reqs;
         try {
           reqs = await require('node-superfetch').get(`https://pokeapi.glitch.me/v1/pokemon/${args.join('%20')}`, { json: true });
         } catch (e) {
-          return msg.edit(client.fns.message({ emoji: 'red', razón: 'no encontré el Pokémon que buscaste, inténtalo de nuevo', message }));
+          return msg.edit(client.message({ emoji: 'red', razón: 'no encontré el Pokémon que buscaste, inténtalo de nuevo', message }));
         }
         let poke = reqs.body[0];
         require('yandex-translate-api')(client.config.yandexAPIkey).translate(poke.description, { to: 'es' }, (err, res) => {

@@ -16,8 +16,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0] || args.join(' ').length < 3) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs ingresa el texto para que lo repita Clyde', usage: this.help.usage(message.prefix), message }));
-      else if (args.join(' ').length > 70) message.channel.send(client.fns.message({ emoji: 'red', razón: 'el texto no puede exceder los 70 carácters', message }));
+      if (!args[0] || args.join(' ').length < 3) message.channel.send(client.message({ emoji: 'red', razón: 'noargs ingresa el texto para que lo repita Clyde', usage: this.help.usage(message.prefix), message }));
+      else if (args.join(' ').length > 70) message.channel.send(client.message({ emoji: 'red', razón: 'el texto no puede exceder los 70 carácters', message }));
       else {
         let img = await require('node-superfetch').get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${args.join(' ')}`),
           msg = await message.channel.send(client.fns.reply('generating', message));

@@ -30,11 +30,11 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send({ embed });
       });
     } catch (e) {
-      message.channel.send(message.error(e));
       client.err({
         type: 'command',
         name: this.help.name,
-        error: e
+        error: e,
+        message
       });
     }
   }

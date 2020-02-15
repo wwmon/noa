@@ -27,15 +27,15 @@ module.exports = class command extends require('../../base/models/Command.js') {
         try {
           result = JSON.parse(img.body);
         } catch (e) {
-          return msg.edit(client.fns.message({ emoji: 'red', razón: 'no se encontraron resultados', message }));
+          return msg.edit(client.message({ emoji: 'red', razón: 'no se encontraron resultados', message }));
         }
-        if (!result) msg.edit(client.fns.message({ emoji: 'red', razón: 'no se encontraron resultados', message }));
+        if (!result) msg.edit(client.message({ emoji: 'red', razón: 'no se encontraron resultados', message }));
         else {
           result = result[Math.floor(Math.random() * result.length)];
           let tagString = result.tags.split(' ');
           if (tagString.length > 2047) tagString = args.join(' ');
           if (tagString.length > 0) {
-            if (tagString.some(x => deep.includes(x.toLowerCase()))) return msg.edit(client.fns.message({ emoji: 'red', razón: 'tu búsqueda está vetada, intenta con otra cosa...', message }));
+            if (tagString.some(x => deep.includes(x.toLowerCase()))) return msg.edit(client.message({ emoji: 'red', razón: 'tu búsqueda está vetada, intenta con otra cosa...', message }));
             else {
               embed
                 .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL())

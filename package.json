@@ -1,6 +1,6 @@
 {
   "name": "noa",
-  "version": "3.1.2",
+  "version": "3.1.4",
   "description": "Noa Discord Bot",
   "main": "index.js",
   "scripts": {

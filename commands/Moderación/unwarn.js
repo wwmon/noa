@@ -29,7 +29,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
 
       if (!message.member.hasPermission('KICK_MEMBERS')) return message.channel.send(client.fns.noPerm(message));
       let wUser = message.mentions.users.first();
-      if (!wUser) return message.reply('Debes mencionar al usuario que se le borrará una advertencia');
+      if (!wUser) return message.channel.send('Debes mencionar al usuario que se le borrará una advertencia');
       if (message.mentions.users.first() == client.user) return message.channel.send(`No puedes hacerlo conmigo`);
       if (message.mentions.users.first() == message.author) return message.channel.send('Lo siento, pero no puedes ejercer esta acción sobre ti mismo');
       let reason = args.join(' ').slice(22);

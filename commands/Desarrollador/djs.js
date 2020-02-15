@@ -18,12 +18,12 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs', message }, this.help.usage(message.prefix)));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs', message }, this.help.usage(message.prefix)));
       else {
         let u = await require('node-superfetch').get(`https://djsdocs.sorta.moe/v2/embed?src=master&q=${encodeURIComponent(args.join(' '))}`);
         u = u.body;
         if (u && !u.error) message.channel.send({ embed: u });
-        else message.channel.send('`' + args.join(' ') + '` no es una búsqueda válida');
+        else message.channel.send(client.message({ emoji: 'red', razón: args.join(' ') + ' no es una búsqueda válida', usage: this.help.usage(message.prefix), message }));
       }
     } catch (e) {
       client.err({

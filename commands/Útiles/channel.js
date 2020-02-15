@@ -25,11 +25,11 @@ module.exports = class command extends require('../../base/models/Command.js') {
           texto = '',
           no_categorias = [],
           categorias = [];
-        message.guild.channels
+        message.guild.channels.cache
           .filter(x => x.type === 'category')
           .array()
           .map(c => categorias.push({ nombre: c.name, parseID: c.id, posicion: c.position, canales: [] }));
-        message.guild.channels
+        message.guild.channels.cache
           .filter(x => x.type !== 'category')
           .array()
           .map(c => {
@@ -68,9 +68,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
         }
         if (message.mentions.channels.size > 0) return await send(message.mentions.channels.first());
         let c = message.guild.channels.cache.array().filter(x => x.type !== 'category' && `${x.name}`.toLowerCase().includes(args[0].toLowerCase()));
-        if (c.length <= 0) return message.channel.send(client.fns.message({ emoji: 'red', razón: 'no hay canales coinciden con tu búsqueda, intenta ser más específico', message }));
+        if (c.length <= 0) return message.channel.send(client.message({ emoji: 'red', razón: 'no hay canales coinciden con tu búsqueda, intenta ser más específico', message }));
         else if (c.length === 1) return await send(c[0]);
-        else if (c.length > 10) return message.channel.send(client.fns.message({ emoji: 'red', razón: 'muchos canales coinciden con tu búsqueda, intenta ser más específico', message }));
+        else if (c.length > 10) return message.channel.send(client.message({ emoji: 'red', razón: 'muchos canales coinciden con tu búsqueda, intenta ser más específico', message }));
         else {
           let m = 'Selecciona un número entre 1 y ' + c.length + '```';
           for (let x = 0; x < c.length; x++) {
@@ -80,7 +80,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
             i = await message.channel.awaitMessages(m => m.author.id === message.author.id && m.content > 0 && m.content < c.length + 1, { max: 1, time: 30000 });
           i = await i.first();
           if (!i) {
-            message.channel.send(client.fns.message({ emoji: 'red', razón: 'no se recibió respuesta', message }));
+            message.channel.send(client.message({ emoji: 'red', razón: 'no se recibió respuesta', message }));
             msg.delete({ timeout: 5000 });
           } else {
             await send(c[i.content - 1]);

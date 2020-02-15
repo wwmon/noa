@@ -28,15 +28,17 @@ module.exports = class command extends require('../../base/models/Command.js') {
       attempts = await attempts.first();
       if (!attempts) {
         msg.edit({ embed: { color: 0xc82828, title: '<:pokemonLeft:600412308912734262> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
-        return message.channel.send('Tardaste mucho tiempo en escribir, por lo tanto al Pokémon le ha dado tiempo de escaparse');
-      }
-      let answer = attempts.content.toLowerCase();
-      if (answer === pokem.name.toLowerCase()) {
+        message.channel.send(client.message({ emoji: 'red', razón: 'tardaste mucho en escribir, ¡al pókemon le dio tiempo a huir!', usage: this.help.usage(message.prefix), message }));
+        return;
+      } else if (attempts === pokem.name.toLowerCase()) {
         await msg.edit({ embed: { color: 0x3ce3f7, title: '<:pokeball:600408195457875971> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
-        return msg.channel.send(`Bien hecho, **${pokem.name[0].toUpperCase()}${pokem.name.slice(1)}** fue atrapado!`);
+        message.channel.send(client.message({ emoji: 'green', razón: `bien hecho, ¡**${pokem.name[0].toUpperCase()}${pokem.name.slice(1)}** ha sido atrapado!`, usage: this.help.usage(message.prefix), message }));
+        return;
+      } else {
+        await msg.edit({ embed: { color: 0xc82828, title: '<:pokemonLeft:600412308912734262> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
+        message.channel.send(client.message({ emoji: 'red', razón: 'oops, te equivocaste y el pókemon escapó', usage: this.help.usage(message.prefix), message }));
+        return;
       }
-      await msg.edit({ embed: { color: 0xc82828, title: '<:pokemonLeft:600412308912734262> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
-      return msg.channel.send('Oops, te has equivocado y el Pokémon se escapó');
     } catch (e) {
       client.err({
         type: 'command',

@@ -20,7 +20,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         i = message.mentions.users.first() || message.author,
         img = await require('node-superfetch').get(`https://eclyssia-api.tk/api/v1/captcha?url=${i.displayAvatarURL({ format: 'png', size: 2048 })}&username=${i.username}`);
       msg.delete();
-      message.channel.send(new (require('discord.js').MessageAttachment)(img.raw));
+      message.channel.send(new (require('discord.js')).MessageAttachment(img.raw));
     } catch (e) {
       client.err({
         type: 'command',

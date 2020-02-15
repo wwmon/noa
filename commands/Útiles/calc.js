@@ -16,13 +16,13 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs escribe una operación a calcular', usage: this.help.usage(message.prefix), message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe una operación a calcular', usage: this.help.usage(message.prefix), message }));
       else {
         let msg = await message.channel.send(client.fns.reply('generating', message));
         try {
           var resp = require('mathjs').evaluate(args.join(' '));
         } catch (e) {
-          return msg.delete(), message.channel.send(client.fns.message({ emoji: 'red', razón: 'escribe una operación válida, usa `' + message.prefix + 'help calc` para ver la lista de operaciones válidas', message }));
+          return msg.delete(), message.channel.send(client.message({ emoji: 'red', razón: 'escribe una operación válida, usa `' + message.prefix + 'help calc` para ver la lista de operaciones válidas', message }));
         }
         embed
           .setColor(client.fns.selectColor('lightcolors'))

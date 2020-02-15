@@ -51,14 +51,14 @@ module.exports = class command extends require('../../base/models/Command.js') {
       }
       async function send(user) {
         let searching = client.guilds.cache
-          .filter(g => g.members.has(user.id))
+          .filter(g => g.members.cache.has(user.id))
           .map(g => `\`${g.name}\``)
           .join(`,\n`);
         embed
           .setAuthor(`Servidores en común de ${user.tag}`, user.displayAvatarURL())
           .setDescription(`\n\n${searching.length > 2048 ? searching.slice(0, 2000) + '\n...' : searching}`)
           .setColor(client.fns.selectColor('lightcolors'))
-          .setFooter(`Un total de ${client.guilds.cache.filter(g => g.members.has(user.id)).size} servidores`);
+          .setFooter(`Un total de ${client.guilds.cache.filter(g => g.members.cache.has(user.id)).size} servidores`);
         message.channel.send({ embed });
       }
     } catch (e) {

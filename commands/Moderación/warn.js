@@ -98,7 +98,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
 
         setTimeout(function() {
           wUser.removeRole(muterole.id);
-          message.reply(`<@${wUser.id}> ha sido desmuteado por ${client.user}`);
+          message.channel.send(`<@${wUser.id}> ha sido desmuteado por ${client.user}`);
         }, ms(mutetime));
       }
 

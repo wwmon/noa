@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('*¡Por favor! No me gusta que te muerdas.*');
-      if (message.mentions.users.first() === client.user) return message.channel.send('Odio que me muerdan, nunca lo intentes');
-      if (message.mentions.users.size < 1) return message.channel.send('Tienes hambre, decide a quién deseas morder');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'sad', razón: 'no me gusta que te muerdas', usage: this.help.usage(message.prefix), message }))
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: '<:noaMonGun:672934974319493150>', razón: 'ni lo intentes', usage: this.help.usage(message.prefix), message }))
+      if (message.mentions.users.size < 1) return message.channel.send(message.channel.send(client.message({ emoji: 'noidea', razón: 'muerde a alguien, menos a mí', usage: this.help.usage(message.prefix), message })));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** mordió a **' + message.mentions.users.first().username + '**')

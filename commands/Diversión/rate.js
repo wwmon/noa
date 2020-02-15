@@ -15,7 +15,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs escribe el texto a puntuar', usage: this.help.usage(message.prefix), message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe el texto a puntuar', usage: this.help.usage(message.prefix), message }));
       else {
         let punt = Math.floor(Math.random() * 11),
           stars = '';

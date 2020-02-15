@@ -5,7 +5,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       description: 'Genera un GIF con un avatar aplicándole el efecto triggered',
       usage: prefix => `\`${prefix}triggered [@usuario]\``,
       examples: prefix => `\`${prefix}triggered\``,
-      enabled: false,
+      enabled: true,
       cooldown: 10,
       aliases: [],
       botPermissions: [],
@@ -20,7 +20,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         i = (message.mentions.users.first() || message.author).displayAvatarURL({ format: 'png', size: 2048 }),
         img = await require('node-superfetch').get(`https://eclyssia-api.tk/api/v1/triggered?url=${i}`);
       msg.delete();
-      message.channel.send(new (require('discord.js').MessageAttachment)(img.raw));
+      message.channel.send(new (require('discord.js')).MessageAttachment(img.body, 'triggered.gif'));
     } catch (e) {
       client.err({
         type: 'command',

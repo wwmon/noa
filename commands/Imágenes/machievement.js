@@ -22,11 +22,11 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .join('%20')
         .split('/')
         .map(arg => arg.trim());
-      if (!args[0]) message.channel.send(client.fns.message({ emoji: 'red', razón: 'noargs escribe el logro de tus sueños', usage: this.help.usage(message.prefix), message }));
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe el logro de tus sueños', usage: this.help.usage(message.prefix), message }));
       else {
         if (args[0].length >= 25) message.channel.send({ emoji: 'red', razón: 'el logro no puede exceder los 25 carácteres', message });
         else {
-          message.channel.send(new (require('discord.js').MessageAttachment)(`https://minecraftskinstealer.com/achievement/${random}/${args[1] ? (args[1].length < 25 ? args[1] : `Logro%20obtenido`) : `Logro%20obtenido`}/${args[0]}`, 'achievement.png'));
+          message.channel.send(new (require('discord.js')).MessageAttachment(`https://minecraftskinstealer.com/achievement/${random}/${args[1] ? (args[1].length < 25 ? args[1] : `Logro%20obtenido`) : `Logro%20obtenido`}/${args[0]}`, 'achievement.png'));
         }
       }
     } catch (e) {

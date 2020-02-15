@@ -17,9 +17,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('No puedes esquivarte a ti mismo...');
-      if (message.mentions.users.first() == client.user) return message.channel.send('No puedes tratar de evitarme jejeje');
-      if (message.mentions.users.size < 1) return message.channel.send('Elige a la persona que deseas esquivar...');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'sad', razón: 'no puedes moderte a ti mismo', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() == client.user) return message.channel.send(client.message({ emoji: 'noidea', razón: 'no puedes evitarme jeje...', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a quien quieres esquivar', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** está esquevando a **' + message.mentions.users.first().username + '**')

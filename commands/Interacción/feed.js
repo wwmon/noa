@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('Si quieres comer utiliza `' + message.prefix + 'eat` u.u');
-      if (message.mentions.users.first() == client.user) return message.channel.send('Muchas gracias por intentar darme de comer, pero no tengo hambre :(');
-      if (message.mentions.users.size < 1) return message.channel.send('Antes que nada, ¡Gracias por tu solaridad!. Pero debes elegir a quién quieres dar de comer...');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'sad', razón: `si quieres comer usa \`${message.prefix}eat\` u.u`, usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() == client.user) return message.channel.send(client.message({ emoji: 'heart', razón: 'gracias pero, no tengo hambre', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas mencionar a alguien para alimentarlo', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** le dio de comer a **' + message.mentions.users.first().username + '**')
