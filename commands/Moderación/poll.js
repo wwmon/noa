@@ -59,11 +59,11 @@ module.exports = class command extends require('../../base/models/Command.js') {
       }
 
       if (!args[0]) {
-        return message.channel.send(`Debes proporcionar una pregunta para aplicarla en la votación.\n\n> **Ejemplo de uso:** \`${message.prefix}poll ¿Qué eliges? ;; Pizza ;; Hamburguesa ;; Tacos ;; Burritos ;; Agua\``);
+        return message.channel.send(`Debes proporcionar una pregunta para aplicarla en la votación\n\n> **Ejemplo de uso:** \`${message.prefix}poll ¿Qué eliges? ;; Pizza ;; Hamburguesa ;; Tacos ;; Burritos ;; Agua\``);
       }
 
       if (!args[2]) {
-        return message.channel.send(`Debes al menos dos opciones para aplicarla en la votación.\n\n> **Ejemplo de uso:** \`${message.prefix}poll ¿Qué eliges? ;; Pizza ;; Hamburguesa ;; Tacos ;; Burritos ;; Agua\``);
+        return message.channel.send(`Debes al menos dos opciones para aplicarla en la votación\n\n> **Ejemplo de uso:** \`${message.prefix}poll ¿Qué eliges? ;; Pizza ;; Hamburguesa ;; Tacos ;; Burritos ;; Agua\``);
       }
 
       if (!args[3]) {

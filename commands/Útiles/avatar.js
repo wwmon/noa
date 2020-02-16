@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'avatar',
-      description: 'Mira con mejor belleza el avatar de un usuario, e incluso el tuyo!\n> **Parámetros:**\n• `--server` , `--servidor`: Muestra el ícono del servidor.\n• `--random`: Muestra el un avatar aleatorio',
+      description: 'Mira con mejor belleza el avatar de un usuario, e incluso el tuyo!\n> **Parámetros:**\n• `--server` , `--servidor`: Muestra el ícono del servidor\n• `--random`: Muestra el un avatar aleatorio',
       usage: prefix => `\`${prefix}avatar [usuario | server]\``,
       examples: prefix => `\`${prefix}avatar server\n${prefix}avatar Luna\``,
       enabled: true,
@@ -37,7 +37,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
           try {
             return await send(await client.users.fetch(args[0]));
           } catch {
-            return message.channel.send('Esa id no pertenece a ningún usuario');
+            return message.channel.send(client.message({ emoji: 'red', razón: 'esa ID no pertenece a nadie', usage: this.help.usage(message.prefix), message }));
           }
         }
         if (message.mentions.users.size > 0) return await send(message.mentions.users.first());

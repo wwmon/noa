@@ -18,7 +18,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send('¡Vamos! Anímate a buscar lo que siempre quisiste...');
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs anímate a buscar lo que siempre quisiste...', usage: this.help.usage(message.prefix), message }));
       else {
         let deep = ['mon', 'loli', 'shota', 'cub', 'young', 'child', 'baby', 'guro', 'gore', 'vore'],
           img = await require('node-superfetch').get(`https://rule34.xxx?page=dapi&s=post&q=index&limit=100&tags=${encodeURI(`${args.join('_')}+rating:explicit`)}&json=1`),

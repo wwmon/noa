@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'commands',
-      description: 'Muestra la lista de comandos.\n\n> **Parámetros:**\n• `--nodm`, `--nodmhelp`: Cancela el envío de la lista de comandos al mensaje privado y lo hace en el canal que se utilice',
+      description: 'Muestra la lista de comandos\n> **Parámetros:**\n• `--nodm`, `--nodmhelp`: Cancela el envío de la lista de comandos al mensaje privado y lo hace en el canal que se utilice',
       usage: prefix => `\`${prefix}commands\``,
       examples: prefix => `\`${prefix}commands\``,
       enabled: true,

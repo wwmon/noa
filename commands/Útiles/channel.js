@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'channel',
-      description: 'Muestra la información sobre algún canal.\n> **Parámetros:**\n• `--lista`, `--list`: Mira la lista de los canales del servidor',
+      description: 'Muestra la información sobre algún canal\n> **Parámetros:**\n• `--lista`, `--list`: Mira la lista de los canales del servidor',
       usage: prefix => `\`${prefix}channel [canal]\``,
       examples: prefix => `\`${prefix}channel reglas\``,
       enabled: true,
@@ -50,7 +50,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
             for (var canal of categoria.canales) texto += canal.tipo == 'text' ? `    ${img_texto} ${canal.nombre}\n` : `    ${img_voz} ${canal.nombre}\n`;
           }
         }
-        if (texto.length >= 2049) return message.channel.send('Este servidor tiene muchos canales y supera mis límites. El comando no puede ser ejecutado');
+        if (texto.length >= 2049) return message.channel.send(client.message({ emoji: 'red', razón: 'este servidor tiene demasiados canales', usage: this.help.usage(message.prefix), message }));
         embed
           .setColor('#9C9C9C')
           .setAuthor(`Listado de canales en ${message.guild.name}`, message.guild.iconURL({ format: 'jpg', size: 2048 }))
@@ -63,7 +63,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
           try {
             return await send(message.guild.channels.cache.get(args[0]));
           } catch {
-            return message.channel.send('Esa id no pertenece a ningún canal. (O al menos no de este servidor)');
+            return message.channel.send(client.message({ emoji: 'red', razón: 'esa ID no pertenece a ningún canal (o no en este servidor)', usage: this.help.usage(message.prefix), message }));
           }
         }
         if (message.mentions.channels.size > 0) return await send(message.mentions.channels.first());

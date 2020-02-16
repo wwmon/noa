@@ -24,10 +24,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setDescription('**' + message.author.username + '** se corrió... O al menos lo intenta')
           .setImage(client.fns.gifs(this.help.name));
         message.channel.send({ embed });
-        return;
-      } else if (message.mentions.users.first() === client.user) {
-        return message.channel.send('En mi no por favor >.<');
-      } else {
+      } else if (message.mentions.users.first() === client.user) message.channel.send(client.message({ emoji: ':sob:', razón: 'en mí no', usage: this.help.usage(message.prefix), message }));
+      else {
         embed
           .setColor(client.fns.selectColor('lightcolors'))
           .setDescription('**' + message.author.username + '** se corrió en **' + message.mentions.users.first().username + '**')

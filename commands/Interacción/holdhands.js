@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('No dejaré que sostengas tu propia mano e.e');
-      if (message.mentions.users.first() === client.user) return message.channel.send('No gracias UwU');
-      if (message.mentions.users.size < 1) return message.channel.send('¿A quién deseas sostener la mano?');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'no dejaré que sostengas tu propia mano', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: 'red', razón: 'no gracias uwu', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a quien quieres sostener su mano', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** está tomando la mano de **' + message.mentions.users.first().username + '**')

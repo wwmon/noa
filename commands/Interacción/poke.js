@@ -17,8 +17,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       let img = await require('node-superfetch').get('https://nekos.life/api/v2/img/poke');
-      if (message.mentions.users.first() === client.user) return message.channel.send('Ni lo intentes n.n');
-      if (message.mentions.users.first() === message.author || !message.mentions.users.first()) {
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: '<:noaMonGun:672934974319493150>', razón: 'que ni se te ocurra', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === message.author) {
         embed
           .setDescription('**' + message.author.username + '** me gusta molestarte :)')
           .setColor(client.fns.selectColor('lightcolors'))
@@ -26,10 +26,10 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send(embed);
         return;
       }
-      if (message.mentions.users.size < 1) return message.channel.send('¿A quién quieres molestar?');
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs ¿a quién quieres molestar?', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
-        .setDescription('**' + message.author.username + '** mordió a **' + message.mentions.users.first().username + '**')
+        .setDescription('**' + message.author.username + '** molesta a **' + message.mentions.users.first().username + '**')
         .setImage(img.body.url);
       message.channel.send({ embed });
     } catch (e) {

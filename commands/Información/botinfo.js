@@ -32,7 +32,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
             .duration(client.uptime)
             .format(' D [días], H [horas], m [min], s [segs]')}\`\`\``
         )
-        .addField('Enlaces', `[Invítame ❤️](https://noa.wwmon.xyz/invite) | [Soporte ❓](https://noa.wwmon.xyz/support) | [Donaciones 💝](https://noa.wwmon.xyz/donate) | [top.gg 🤖](https://noa.wwmon.xyz/dbl) | [Vota 📥](https://noa.wwmon.xyz/vote) | [Web (WIP) 🌐](https://noa.wwmon.xyz/)`)
+        .addField('Enlaces', `[Invítame ❤️](https://noa.wwmon.xyz/invite) | [Soporte ❓](https://noa.wwmon.xyz/support) | [Donaciones 💝](https://noa.wwmon.xyz/donate) | [DBL 🤖](https://noa.wwmon.xyz/dbl) | [Vota 📥](https://noa.wwmon.xyz/vote) | [Web (WIP) 🌐](https://noa.wwmon.xyz/)`)
         .setFooter('Versión: ' + require('../../package.json').version)
         .setTimestamp();
       msg.edit('** **', { embed });

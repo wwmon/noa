@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'warn',
       description: '',
       usage: prefix => `\`${prefix}warn <@usuario> <razón>\``,
-      examples: prefix => `\`${prefix}warn Hyp#9293 Irrespeto a los demás.\``,
+      examples: prefix => `\`${prefix}warn Hyp#9293 Irrespeto a los demás\``,
       enabled: true,
       ownerOnly: false,
       guildOnly: false,

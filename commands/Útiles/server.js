@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'server',
-      description: 'Revisa la información de tu servidor.\n> **Parámetros:**\n• `--boost`: Muestra el progreso/estado de las mejoras de servidor.\n• `--icon`: Muestra el ícono del servidor',
+      description: 'Revisa la información de tu servidor\n> **Parámetros:**\n• `--boost`: Muestra el progreso/estado de las mejoras de servidor\n• `--icon`: Muestra el ícono del servidor',
       usage: prefix => `\`${prefix}server [opcion]\``,
       examples: prefix => `\`${prefix}server --boost\``,
       enabled: true,
@@ -45,7 +45,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send({ embed });
         return;
       } else if (args[0].toLowerCase() === '--icon') {
-        if (message.guild.iconURL() === null) return message.channel.send('**' + message.author.username + '**, este servidor no cuenta con un ícono personalizado');
+        if (message.guild.iconURL() === null) return message.channel.send(client.message({ emoji: 'red', razón: 'este servidor no cuenta con un ícono personalizado', message }));
         else {
           embed
             .setColor(client.fns.selectColor('lightcolors'))

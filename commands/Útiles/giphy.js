@@ -16,10 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) message.channel.send('Agrega el nombre del GIF que quieres buscar x_x');
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs agrega el nombre del GIF que quieres busar', usage: this.help.usage(message.prefix), message }));
       else {
-        let gif = await require('gif-search').random(args[0]),
-          randomcolor = (((1 << 24) * Math.random()) | 0).toString(16);
+        let gif = await require('gif-search').random(args[0])
         embed
           .setColor(client.fns.selectColor('lightcolors'))
           .setImage(gif)

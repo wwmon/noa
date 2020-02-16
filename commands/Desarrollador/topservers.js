@@ -41,7 +41,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setDescription(pages[page - 1])
           .setFooter(`Página ${page} de ${pages.length}`)
           .setColor(client.fns.selectColor('lightcolors'));
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       });
       forwards.on('collect', r => {
         if (page === pages.length) return;
@@ -50,7 +50,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setDescription(pages[page - 1])
           .setColor(client.fns.selectColor('lightcolors'))
           .setFooter(`Página ${page} de ${pages.length}`);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       });
     } catch (e) {
       client.err({

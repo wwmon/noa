@@ -76,9 +76,8 @@ module.exports = class client extends Client {
     else if (emoji === 'sad') s += ['😞', '😔', '😟', '🙁', '😣', '😫', '😦', '😧', '😪'][Math.floor(Math.random() * 9)];
     else s += emoji;
     s += ' ~ **' + message.author.username + '**, ';
-    if (razón[0].toLowerCase() === 'noargs') {
-      return (s += (razón[1] ? razón.slice(1).join(' ') + '\n' : noargs[Math.floor(Math.random() * noargs.length)] + '\n') + '> **Uso:** ' + data.usage);
-    } else return (s += razón.join(' '));
+    if (razón[0].toLowerCase() === 'noargs') return (s += (!razón[1] ? noargs[Math.floor(Math.random() * noargs.length)] + '\n' : razón.slice(1).join(' ') + '\n') + '> **Uso:** ' + data.usage);
+    else return (s += razón.join(' '));
   }
   /* Encuentra o crea un usuario en la base de datos */
   async findOrCreateUser(param, isLean) {

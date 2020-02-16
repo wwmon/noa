@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('¿C-crees que puedes hacerte mala cara a ti solo?...');
-      if (message.mentions.users.first() === client.user) return message.channel.send('¿Enserio quieres hacerme esto? T-T');
-      if (message.mentions.users.size < 1) return message.channel.send('Menciona a la persona que le harás mala cara');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: '<:noaThinku:673966812282748968>', razón: '¿crees que puedes hacerte mala cara?', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: '<:noaSippu:673964148044070927>', razón: 'a mí no', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a quien quieres hacerle mala cara', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** le hizo una mala cara a **' + message.mentions.users.first().username + '**')

@@ -22,22 +22,22 @@ module.exports = class command extends require('../../base/models/Command.js') {
         if (message.guild) {
           embed.setAuthor(`Latencia de ${client.config.bot}`, client.user.displayAvatarURL());
           if (ping >= 299) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('RED');
+            embed.setDescription(`**API ping:** ${ping} ms\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('RED');
             await m.edit({ embed });
           } else if (ping >= 200) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('RED');
+            embed.setDescription(`**API ping:** ${ping} ms\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('RED');
             await m.edit({ embed });
           } else if (ping >= 150) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('ORANGE');
+            embed.setDescription(`**API ping:** ${ping} ms\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('ORANGE');
             await m.edit({ embed });
           } else if (ping >= 100) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('ORANGE');
+            embed.setDescription(`**API ping:** ${ping} ms\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('ORANGE');
             await m.edit({ embed });
           } else if (ping >= 50) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('GREEN');
+            embed.setDescription(`**API ping:** ${ping} ms\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('GREEN');
             await m.edit({ embed });
           } else if (ping < 49) {
-            embed.setDescription(`**API ping:** ${ping} ms.\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('GREEN');
+            embed.setDescription(`**API ping:** ${ping} ms\n**Mensajería:** ${m.createdTimestamp - message.createdTimestamp}ms`).setColor('GREEN');
             await m.edit({ embed });
           }
         }

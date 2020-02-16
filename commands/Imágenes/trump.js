@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'trump',
       description: 'Genera una imagen donde Donald Trump establece una ley',
       usage: prefix => `\`${prefix}trump <texto>\``,
-      examples: prefix => `\`${prefix}trump Tercera guerra mundial.\``,
+      examples: prefix => `\`${prefix}trump Tercera guerra mundial\``,
       enabled: true,
       ownerOnly: false,
       guildOnly: false,

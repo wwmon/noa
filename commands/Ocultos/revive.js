@@ -17,9 +17,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('No puedes revivirte a ti mismo si estás muerto...');
-      if (message.mentions.users.first() == client.user) return message.channel.send('¡Yo estoy más viva que nadie!');
-      if (message.mentions.users.size < 1) return message.channel.send('Es hora de traer a aquellos que tanto amas... ¡Pero dime a quien!');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'no puedes revivirte a ti mism@', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() == client.user) return message.channel.send(client.message({ emoji: 'red', razón: 'yo estoy más que viva', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'menciona a quien quieres resucitar', usage: this.help.usage(message.prefix), message }));
       embed
         .setDescription('**' + message.author.username + '** revivió a **' + message.mentions.users.first().username + '**')
         .setColor(client.fns.selectColor('lightcolors'))

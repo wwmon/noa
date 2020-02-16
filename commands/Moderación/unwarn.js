@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'unwarn',
       description: 'Remueve una advertencia a un usuario',
       usage: prefix => `\`${prefix}unwarn <@usuario> [razón]\``,
-      examples: prefix => `\`${prefix}unwarn Hyp#9293 Apelación exitosa.\``,
+      examples: prefix => `\`${prefix}unwarn Hyp#9293 Apelación exitosa\``,
       enabled: true,
       ownerOnly: false,
       guildOnly: false,

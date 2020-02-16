@@ -20,23 +20,15 @@ module.exports = class event {
       }
       message.prefix = message.guild ? data.guild.prefix : client.config.prefix;
       if (message.author) {
-        if (client.afk.get(message.author.id)) {
-          client.afk.delete(message.author.id);
-          message.channel.send('¡Bienvenido de nuevo **' + message.author.username + '**!');
-          return;
-        }
+        if (client.afk.get(message.author.id)) client.afk.delete(message.author.id), message.channel.send(client.message({ emoji: 'green', razón: '¡bienvenido de nuevo!', message }));
       }
       //if (message.guild) {}
       //if (message.member) {}
       if (message.mentions.users.first()) {
         let hijo = client.afk.get(message.mentions.users.first().id);
-        if (hijo) {
-          message.channel.send('El usuario que has mencionado está afk por: ' + hijo.reason);
-        }
+        if (hijo) message.channel.send(client.message({ emoji: 'red', razón: 'el usuario que has mencionado está AFK por: ' + hijo.reason, message }));
       }
-      if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) {
-        message.channel.send('¡Hola! Soy ' + client.config.bot + ', para conocer más de mí puedes consultar con `' + message.prefix + 'help`');
-      }
+      if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) message.channel.send(client.message({ emoji: 'heart', razón: `¡hola! Mi nombre es ${client.config.bot}, para conocer más sobre mí puedes consultar con \`${message.prefix}help\``, message }));
       let prefix = client.fns.getPrefix(message, data);
       if (!prefix) return;
       let args = message.content

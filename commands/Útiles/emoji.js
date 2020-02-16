@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'emoji',
-      description: 'Muestra la información de un emoji seleccionado.\n> **Opciones de usuario:**\n• `<emoji> --info`: Muestra toda la información relacionada con el emoji.\n\n> **Opciones de administración:**\n• `add <nombre> <imagen>`: Agrega un emoji al servidor donde lo utilizas sin necesidad de acceder a la configuración del servidor.\n• `remove <emoji>`: Elimina un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor.\n• `rename <emoji> <nuevoNombre>`: Cambia el nombre de un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor',
+      description: 'Muestra la información de un emoji seleccionado\n> **Opciones de usuario:**\n• `<emoji> --info`: Muestra toda la información relacionada con el emoji\n\n> **Opciones de administración:**\n• `add <nombre> <imagen>`: Agrega un emoji al servidor donde lo utilizas sin necesidad de acceder a la configuración del servidor\n• `remove <emoji>`: Elimina un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor\n• `rename <emoji> <nuevoNombre>`: Cambia el nombre de un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor',
       usage: prefix => `\`${prefix}emoji <add | remove | --lista | emoji [--info]>\``,
       examples: prefix => `${prefix}emoji <:gaphy:531318269190078505> --info\n${prefix}emoji remove <:DBL:489519574698426369>`,
       enabled: true,
@@ -56,7 +56,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       } else if (args[0].toLowerCase() === 'add' || args[0].toLowerCase() === 'agregar') {
         if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
-          if (!args[1]) message.channel.send('Necesitas elegir el nombre para el emoji a agregar');
+          if (!args[1]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas agregar un nombre', usage: this.help.usage(message.prefix), message }));
           else {
             let create;
             try {
@@ -64,36 +64,36 @@ module.exports = class command extends require('../../base/models/Command.js') {
             } catch {
               return message.channel.send(client.message({ emoji: 'red', razón: 'parece que no pusiste bien la imagen o ya no hay más espacio para emojis', message }));
             }
-            message.channel.send(`El emote \`:${args[1]}:\` fue agregado correctamente ${create.toString()}`);
+            message.channel.send(client.message({ emoji: 'green', razón: 'el emoji ha sido creado correctamente ' + create.toString(), usage: this.help.usage(message.prefix), message }));
           }
         }
         return;
       } else if (args[0].toLowerCase() === 'remove' || args[0].toLowerCase() === 'remover') {
         if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
-          if (!args[1]) message.channel.send('Necesitas especificar un emoji para borrar');
+          if (!args[1]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas proporcionar un emoji para borrar', usage: this.help.usage(message.prefix), message }));
           let emoji1 = message.guild.emojis.cache.get(args[0]) || message.guild.emojis.cache.find(x => x.name.includes(args[1])) || message.guild.emojis.cache.find(x => x.toString() === args[1]);
-          if (!emoji1) message.channel.send('Emoji no encontrado');
+          if (!emoji1) message.channel.send(client.message({ emoji: 'red', razón: 'emoji no encontrado', usage: this.help.usage(message.prefix), message }));
           else {
-            let msg = await message.channel.send('¿Seguro que quieres borrar el emoji `:' + emoji1.name + ':` ' + emoji1.toString() + '?\n*¡Esta acción es irrevesible!, tienes 30 segundos para decidir con `si` o `no`.*'),
+            let msg = await message.channel.send(client.message({ emoji: 'gray', razón: '¿seguro que quieres borrar este emoji?\nResponde `sí` o `no`', usage: this.help.usage(message.prefix), message })),
               index = await message.channel.awaitMessages(m => m.author.id === message.author.id, {
                 max: 1,
                 time: 30000
               });
             index = index.first();
-            if (!index) message.channel.send('No se recibió respuesta, cancelando acción');
+            if (!index) message.channel.send(client.message({ emoji: 'red', razón: 'no se recibió respuesta', usage: this.help.usage(message.prefix), message }));
             else {
               if (index.content.toLowerCase().startsWith('sí') || index.content.toLowerCase().startsWith('si') || index.content.toLowerCase().startsWith('yes') || index.content.toLowerCase().startsWith('confirmo')) {
                 try {
-                  emoji1.delete(`Acción cometida desde un comando por: ${message.author.tag}`);
-                  message.channel.send('Emoji eliminado correctamente');
+                  await emoji1.delete();
+                  message.channel.send(client.message({ emoji: 'green', razón: 'emoji eliminado correctamente', usage: this.help.usage(message.prefix), message }));
                 } catch {
-                  return message.channel.send('Ha ocurrido un error borrando el emoji');
+                  return message.channel.send(client.message({ emoji: 'red', razón: 'ocurrió un error mientras intentaba eliminar el emoji', usage: this.help.usage(message.prefix), message }));
                 }
               } else if (index.content.toLowerCase().startsWith('no') || index.content.toLowerCase().startsWith('nope') || index.content.toLowerCase().startsWith('desconfirmo')) {
-                message.channel.send('Está bien, cancelando acción');
+                message.channel.send(client.message({ emoji: 'green', razón: 'está bien, cancelando...', usage: this.help.usage(message.prefix), message }));
               } else {
-                message.channel.send('Respuesta incorrecta. Solo admito "sí" y "no". Cancelando acción');
+                message.channel.send(client.message({ emoji: 'red', razón: 'respuesta incorrecta\nSolamente admito `sí` o `no`', usage: this.help.usage(message.prefix), message }));
               }
             }
           }
@@ -102,29 +102,29 @@ module.exports = class command extends require('../../base/models/Command.js') {
       } else if (args[0].toLowerCase() === 'rename' || args[0].toLowerCase() === 'renombrar') {
         if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
-          if (!args[1]) return message.channel.send('Necesitas especificar un emoji para renombrar');
+          if (!args[1]) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas especificar un emoji para renombrar', usage: this.help.usage(message.prefix), message }));
           let emoji1 = message.guild.emojis.cache.get(args[0]) || message.guild.emojis.cache.find(x => x.name.includes(args[1])) || message.guild.emojis.cache.find(x => x.toString() === args[1]);
-          if (!emoji1) message.channel.send('Emoji no encontrado');
+          if (!emoji1) message.channel.send(client.message({ emoji: 'red', razón: 'emoji no encotrado', usage: this.help.usage(message.prefix), message }));
           else {
-            if (!args[2]) message.channel.send('Necesitas especificar un nuevo nombre para el emoji');
+            if (!args[2]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas elegir un nuevo nombre', usage: this.help.usage(message.prefix), message }));
             else {
               try {
-                emoji1.edit({ name: args[2], reason: `Acción cometida desde un comando por: ${message.author.tag}` });
-                message.channel.send('He cambiado correctamente el nombre del emoji, ahora será `:' + args[2] + ':` ' + emoji1.toString());
+                await emoji1.edit({ name: args[2] });
+                message.channel.send(client.message({ emoji: 'green', razón: 'he cambiado el nombre del emoji correctamente', usage: this.help.usage(message.prefix), message }));
               } catch {
-                return message.channel.send('Ha ocurrido un error intentando cambiar el nombre');
+                return message.channel.send(client.message({ emoji: 'red', razón: 'ha ocurrido un error mientras intentaba renombrar el emoji', usage: this.help.usage(message.prefix), message }));
               }
             }
           }
         }
         return;
       } else {
-        if (!emoji) message.channel.send('Emoji no encontrado');
+        if (!emoji) message.channel.send(client.message({ emoji: 'red', razón: 'noargs emoji no encontrado', usage: this.help.usage(message.prefix), message }));
         else {
           if (args.pop() === '--info') {
             let emo = emoji[3].split(':');
             let uwu = client.emojis.cache.get(emo[1]);
-            if (!uwu) message.channel.send('Emoji no encontrado');
+            if (!uwu) message.channel.send(client.message({ emoji: 'red', razón: 'emoji no encontrado', usage: this.help.usage(message.prefix), message }));
             else {
               message.channel.send(
                 `• Nombre: ${uwu.name}\n• ID: ${uwu.id}\n• Vista previa: ${uwu.toString()}\n• Creado el: ${require('moment')
@@ -133,10 +133,10 @@ module.exports = class command extends require('../../base/models/Command.js') {
               );
             }
           } else {
-            if (!emoji[0].includes('<' || '>')) message.channel.send('El emoji seleccionado es un emoji "default", no puedo hacerlo jumbo');
+            if (!emoji[0].includes('<' || '>')) message.channel.send(client.message({ emoji: 'red', razón: 'el emoji seleccionado es "default", no lo puedo hacer jumbo', usage: this.help.usage(message.prefix), message }));
             else {
               let emo = emoji[3].split(':');
-              message.channel.send(new (require('discord.js')).MessageAttachment(`https://cdn.discordapp.com/emojis/${emo[1]}.${emoji[2].includes('a') ? 'gif' : 'png'}`));
+              message.channel.send(new (require('discord.js').MessageAttachment)(`https://cdn.discordapp.com/emojis/${emo[1]}.${emoji[2].includes('a') ? 'gif' : 'png'}`));
             }
           }
         }

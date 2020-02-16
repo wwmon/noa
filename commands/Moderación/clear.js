@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'clear',
-      description: 'Borra varios mensajes en una sola tanda.\n\n> **NOTA:**\nSolo puedes eliminar un máximo de `100` mensajes a la vez, y un mínimo de `2`',
+      description: 'Borra varios mensajes en una sola tanda\n\n> **NOTA:**\nSolo puedes eliminar un máximo de `100` mensajes a la vez, y un mínimo de `2`',
       usage: prefix => `\`${prefix}clear <cantidadMsg>\``,
       examples: prefix => `\`${prefix}clear 56\``,
       enabled: true,

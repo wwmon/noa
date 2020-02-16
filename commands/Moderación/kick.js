@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'kick',
       description: 'Expulsa a un servidor del usuario',
       usage: prefix => `\`${prefix}kick <@usuario> <razón>\``,
-      examples: prefix => `\`${prefix}kick @Pepito#8293 Avatar inapropiado.\``,
+      examples: prefix => `\`${prefix}kick @Pepito#8293 Avatar inapropiado\``,
       enabled: true,
       ownerOnly: false,
       guildOnly: false,

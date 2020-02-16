@@ -19,11 +19,10 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('Eso sería raro... ¡Intenta con otra persona!');
-      if (message.mentions.users.first() === client.user) return message.channel.send('No me toques >:c');
-      if (message.mentions.users.size < 1) return message.channel.send('Sip, esto es muy raro... Pero debes elegir a alguien para continuar');
-      let msg = await message.channel.send(client.fns.reply('generating', message)),
-        img = await require('node-superfetch').get('https://nekos.life/api/v2/img/classic');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'eso sería raro, ¡intenta con otra persona!', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: ':rage:', razón: 'no me toques', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a quien quieres follar...', usage: this.help.usage(message.prefix), message }));
+      let img = await require('node-superfetch').get('https://nekos.life/api/v2/img/classic');
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** se folló a **' + message.mentions.users.first().username + '**')

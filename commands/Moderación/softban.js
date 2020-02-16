@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'softban',
       description: 'Banea a un usuario y elimina sus mensajes en los últimos 7 días',
       usage: prefix => `\`${prefix}softban <@usuario> <razón>\``,
-      examples: prefix => `\`${prefix}softban @Hula#9293 Traición al servidor.\``,
+      examples: prefix => `\`${prefix}softban @Hula#9293 Traición al servidor\``,
       enabled: true,
       ownerOnly: false,
       guildOnly: false,

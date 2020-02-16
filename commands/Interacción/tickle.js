@@ -24,7 +24,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         message.channel.send({ embed });
         return;
       }
-      if (message.mentions.users.first() === client.user) return message.channel.send('Las cosquillas son mi mayor débilidad, no lo hagas por favor :sob:');
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: ':sob:', razón: 'las cosquillas son mi mayor debilidad, ¡no lo hagas!', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** le está haciendo cosquillas a **' + message.mentions.users.first().username + '**')

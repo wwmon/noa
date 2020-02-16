@@ -16,31 +16,29 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (!args[0]) {
-        return message.channel.send(`**${message.author.username}**, por favor ingresa una ciudad o región para obtener su clima`);
-      } else {
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe una ciudad para obtener su clima', usage: this.help.usage(message.prefix), message }));
+      else {
         require('weather-js').find({ search: args.join(' '), degreeType: 'C' }, (err, result) => {
           if (err) message.channel.send(err);
-          if (result === undefined || result.length === 0) {
-            message.channel.send('Debes ingresar un lugar válido');
-            return;
+          if (result === undefined || result.length === 0) message.channel.send(client.message({ emoji: 'red', razón: 'debes ingresar un lugar válido', usage: this.help.usage(message.prefix), message }));
+          else {
+            let current = result[0].current,
+              location = result[0].location;
+            embed
+              .setDescription(`**${current.skytext}**`)
+              .setAuthor(`Clima de ${current.observationpoint}`)
+              .setThumbnail(current.imageUrl)
+              .setColor(client.fns.selectColor('lightcolors'))
+              .addField('Coordenadas', `${location.lat}, ${location.long}`, true)
+              .addField('Zona horaria', `UTC${location.timezone}`, true)
+              .addField('Hora', `${current.observationtime}`, true)
+              .addField('Tipo de Grado', 'Grado Celsius (ºC)', true)
+              .addField('Temperatura', `${current.temperature} ºC`, true)
+              .addField('Se siente como', `${current.feelslike} ºC`, true)
+              .addField('Vientos', current.winddisplay, true)
+              .addField('Húmedad', `${current.humidity}%`, true);
+            message.channel.send({ embed });
           }
-          let current = result[0].current,
-            location = result[0].location;
-          embed
-            .setDescription(`**${current.skytext}**`)
-            .setAuthor(`Clima de ${current.observationpoint}`)
-            .setThumbnail(current.imageUrl)
-            .setColor(client.fns.selectColor('lightcolors'))
-            .addField('Coordenadas', `${location.lat}, ${location.long}`, true)
-            .addField('Zona horaria', `UTC${location.timezone}`, true)
-            .addField('Hora', `${current.observationtime}`, true)
-            .addField('Tipo de Grado', 'Grado Celsius (ºC)', true)
-            .addField('Temperatura', `${current.temperature} ºC`, true)
-            .addField('Se siente como', `${current.feelslike} ºC`, true)
-            .addField('Vientos', current.winddisplay, true)
-            .addField('Húmedad', `${current.humidity}%`, true);
-          message.channel.send({ embed });
         });
       }
     } catch (e) {
