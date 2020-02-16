@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'user',
-      description: 'Revisa la información de un usuario.> **Parámetros:**\n• `--random`: Obtén un miembro del servidor al azar',
+      description: 'Revisa la información de un usuario\n> **Parámetros:**\n• `--random`: Obtén un miembro del servidor al azar',
       usage: prefix => `\`${prefix}user [usuario | opcion]\``,
       examples: prefix => `\`${prefix}user @Tok#3934\n${prefix}user --random\``,
       enabled: true,

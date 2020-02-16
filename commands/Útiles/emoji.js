@@ -2,9 +2,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'emoji',
-      description: 'Muestra la información de un emoji seleccionado\n> **Opciones de usuario:**\n• `<emoji> --info`: Muestra toda la información relacionada con el emoji\n\n> **Opciones de administración:**\n• `add <nombre> <imagen>`: Agrega un emoji al servidor donde lo utilizas sin necesidad de acceder a la configuración del servidor\n• `remove <emoji>`: Elimina un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor\n• `rename <emoji> <nuevoNombre>`: Cambia el nombre de un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor',
-      usage: prefix => `\`${prefix}emoji <add | remove | --lista | emoji [--info]>\``,
-      examples: prefix => `${prefix}emoji <:gaphy:531318269190078505> --info\n${prefix}emoji remove <:DBL:489519574698426369>`,
+      description: 'Muestra la información de un emoji seleccionado\n> **Opciones de usuario:**\n• `<emoji> --info`: Muestra toda la información relacionada con el emoji\n• `--lista`: Mira la lista de emojis en el servidor\n> **Opciones de administración:**\n• `add <nombre> <imagen>`: Agrega un emoji al servidor donde lo utilizas sin necesidad de acceder a la configuración del servidor\n• `remove <emoji>`: Elimina un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor\n• `rename <emoji> <nuevoNombre>`: Cambia el nombre de un emoji del servidor donde se utiliza, sin necesidad de acceder a la configuración del servidor',
+      usage: prefix => `\`${prefix}emoji <add <nombre> <img/url> | remove <nombre> | --lista | emoji [--info]>\``,
+      examples: prefix => `${prefix}emoji <a:AnoaClap:674435170119712778> --info\n${prefix}emoji remove <:DBL:489519574698426369>`,
       enabled: true,
       guildOnly: true,
       cooldown: 5,
@@ -71,7 +71,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       } else if (args[0].toLowerCase() === 'remove' || args[0].toLowerCase() === 'remover') {
         if (!message.member.permissions.has('MANAGE_EMOJIS')) message.channel.send(client.message({ emoji: 'red', razón: 'no tienes los suficientes permisos', message }));
         else {
-          if (!args[1]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas proporcionar un emoji para borrar', usage: this.help.usage(message.prefix), message }));
+          if (!args[1]) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas proporcionar un emoji para borrar', usage: this.help.usage(message.prefix), message }));
           let emoji1 = message.guild.emojis.cache.get(args[0]) || message.guild.emojis.cache.find(x => x.name.includes(args[1])) || message.guild.emojis.cache.find(x => x.toString() === args[1]);
           if (!emoji1) message.channel.send(client.message({ emoji: 'red', razón: 'emoji no encontrado', usage: this.help.usage(message.prefix), message }));
           else {
