@@ -18,7 +18,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
     try {
       if (!client.afk.get(message.author.id)) {
         client.afk.set(message.author.id, { reason: args[0] ? args.join(' ') : 'AFK' });
-        message.channel.send(`**${message.author.username}**, te has puesto AFK, por la razón: ${args[0] ? args.join(' ') : 'AFK'}`);
+        message.channel.send(client.message({ emoji: 'green', razón: 'te has puesto AFK con la razón: ' + (args[0] ? args.join(' ') : 'AFK'), usage: this.help.usage(message.prefix), message }));
       }
     } catch (e) {
       client.err({

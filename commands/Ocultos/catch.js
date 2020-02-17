@@ -25,9 +25,8 @@ module.exports = class command extends require('../../base/models/Command.js') {
         let non = new (require('discord.js').MessageEmbed)().setDescription('**' + message.author.username + '** se está preparando para lanzar una pokéball');
         return message.channel.send({ embed: non });
       }
-      if (user === message.author) return message.channel.send('No te puedes atrapar a ti mismo en una pokéball. Por que luego... ¿Cómo vas a salir?');
-      if (user === client.user) return message.channel.send('Oye, espera!! Yo no soy un pokémon para que me captures c:');
-      if (user.id == '427692173039894531') return message.channel.send('El no es un pokémon!');
+      if (user === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'si te atrapas, no podrás salir', usage: this.help.usage(message.prefix), message }));
+      if (user === client.user) return message.channel.send(client.message({ emoji: 'red', razón: '¡yo no soy un pokémon!', usage: this.help.usage(message.prefix), message }));
       if (poke === 1) {
         let gifs = ['https://media1.tenor.com/images/62306372330de14f39e09c0634b817aa/tenor.gif?itemid=5203776', 'https://media.giphy.com/media/W04QVzelTHsNW/giphy.gif', 'https://media1.tenor.com/images/22c41837a76d107af3ca2b7eeb09e18f/tenor.gif?itemid=8932614', 'https://media1.tenor.com/images/3ffcf73836d27313cdda846599d50f97/tenor.gif?itemid=5634823', 'https://media1.tenor.com/images/740cc5ac92bad28561bcf2e01d11647c/tenor.gif?itemid=5726646'];
         embed.setDescription('**' + message.author.username + '** lanzó muchas pokéballs a **' + user.username + '**').setImage(gifs[Math.floor(gifs.length * Math.random())]);

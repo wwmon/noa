@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('Lo siento **' + message.author.username + '**, no te puedes contar un secreto a ti solo');
-      if (message.mentions.users.first() === client.user) return message.channel.send('No me gusta que me cuenten secretos... n.n');
-      if (message.mentions.users.size < 1) return message.channel.send('¿Quién s-será la persona que sabrá el s-secreto?');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'no te puedes contar un secreto a ti mism@', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: 'red', razón: 'no soy esa clase de bots que guardan secretos...', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs ¿a quién le contarás este secreto?', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** le dijo un secreto a **' + message.mentions.users.first().username + '**')

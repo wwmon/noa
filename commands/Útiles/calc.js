@@ -2,7 +2,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
   constructor(client) {
     super(client, {
       name: 'calc',
-      description: 'Realiza operaciones matemáticas.\n\n> **Opciones:**\n `+` para realizar una suma.\n`-` para realizar una resta.\n`*` para realizar multiplicaciones.\n`/` para realizar divisiones.\n`^` para elevar un número.\n`pi` equivalente a π (3.141592653589793)\n`mm - cm - mm - m - dam - hm - km` unidades de distancia.\n`to` convierte una unidad de distancia en otra.\n[Más información dando clic acá](https://mathjs.org/docs/index.html)',
+      description: 'Realiza operaciones matemáticas\n\n> **Opciones:**\n `+` para realizar una suma\n`-` para realizar una resta\n`*` para realizar multiplicaciones\n`/` para realizar divisiones\n`^` para elevar un número\n`pi` equivalente a π (3.141592653589793)\n`mm - cm - mm - m - dam - hm - km` unidades de distancia\n`to` convierte una unidad de distancia en otra\n[Más información dando clic acá](https://mathjs.org/docs/index.html)',
       usage: prefix => `\`${prefix}calc <operación>\``,
       examples: prefix => `\`${prefix}calc 360-234\n${prefix}calc 100m to cm\n${prefix}calc 65*pi-54+34/2\``,
       enabled: true,

@@ -20,31 +20,31 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (!args[0]) {
         let img = await require('node-superfetch').get('https://random.dog/woof.json?filter=mp4,webm');
         embed.setImage(img.body.url);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       } else if (args[0].toLowerCase() === '--shiba') {
         let img = await require('node-superfetch').get('http://shibe.online/api/shibes');
         embed.setImage(img.body[0]);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       } else if (args[0].toLowerCase() === '--husky') {
         let img = await require('node-superfetch').get('https://dog.ceo/api/breed/husky/images/random');
         embed.setImage(img.body.message);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       } else if (args[0].toLowerCase() === '--boxer') {
         let img = await require('node-superfetch').get('https://dog.ceo/api/breed/boxer/images/random');
         embed.setImage(img.body.message);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       } else if (args[0].toLowerCase() === '--dalmata' || args[0].toLowerCase() === '--dalmatian') {
         let img = await require('node-superfetch').get('https://dog.ceo/api/breed/dalmatian/images/random');
         embed.setImage(img.body.message);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       } else if (args[0].toLowerCase() === '--chihuahua') {
         let img = await require('node-superfetch').get('https://dog.ceo/api/breed/chihuahua/images/random');
         embed.setImage(img.body.message);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       } else {
         let img = await require('node-superfetch').get('https://random.dog/woof.json?filter=mp4,webm');
         embed.setImage(img.body.url);
-        msg.edit({ embed });
+        msg.edit('** **', { embed });
       }
     } catch (e) {
       client.err({

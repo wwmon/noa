@@ -16,11 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) {
-        return message.channel.send('No quiero lamerte *- Vomita -*');
-      }
-      if (message.mentions.users.first() == client.user) return message.channel.send('No me gusta ser lamida por otros');
-      if (message.mentions.users.size < 1) return message.channel.send('Te veo muy ansioso... Menciona a alguien *- Saca la lengua -*');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'te diría que suerte lamiéndote, pero guatafo', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() == client.user) return message.channel.send(client.message({ emoji: 'red', razón: '¡NOOO! *- vomita -*', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs te veo ansioso, ¡menciona a alguien!', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** está lamiendo a **' + message.mentions.users.first().username + '**')

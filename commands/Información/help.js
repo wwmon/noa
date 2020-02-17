@@ -24,18 +24,18 @@ module.exports = class command extends require('../../base/models/Command.js') {
           .setThumbnail(client.user.avatarURL)
           .setAuthor('Comando de ayuda de ' + client.config.bot, client.user.avatarURL())
           .setDescription('¡Hola! Soy **' + client.config.bot + '** y por aquí te dejaré alguna información importante que debes saber por si necesitas ayuda')
-          .addField('• Prefijo', 'Para utilizar mis comandos debes poner el prefijo **`' + message.prefix + '`** antes de cada uno.\nTambién podrás mencionar a ' + client.config.bot + ' como prefijo (' + client.user.toString() + ' help)')
+          .addField('• Prefijo', 'Para utilizar mis comandos debes poner el prefijo **`' + message.prefix + '`** antes de cada uno\nTambién podrás mencionar a ' + client.config.bot + ' como prefijo (' + client.user.toString() + ' help)')
           .addField('• Ayuda', 'Puedes ver la ayuda detallada de algún comando usando `' + message.prefix + 'help <comando>`')
-          .addField('• Lista de comandos', 'Si quieres ver mi lista de comandos, utiliza **`' + message.prefix + 'commands`** y recibirás la lista de comandos por mensaje privado')
-          .addField('• Enlaces:', '[Invítame ❤️](https://noa.wwmon.xyz/invite) | [Soporte ❓](https://noa.wwmon.xyz/support) | [Donaciones 💝](https://noa.wwmon.xyz/donate) | [top.gg 🤖](https://noa.wwmon.xyz/dbl) | [Vota 📥](https://noa.wwmon.xyz/vote) | [Web (WIP) 🌐](https://noa.wwmon.xyz/)')
+          .addField('• Lista de comandos', 'Si quieres ver mi lista de comandos, utiliza **`' + message.prefix + 'commands`** y recibirás la lista de comandos por mensaje privado o **`' + message.prefix + 'commands --nodm`** para que lo manden en el mismo canal')
+          .addField('• Enlaces:', '[Invítame ❤️](https://noa.wwmon.xyz/invite) | [Soporte ❓](https://noa.wwmon.xyz/support) | [Donaciones 💝](https://noa.wwmon.xyz/donate) | [DBL 🤖](https://noa.wwmon.xyz/dbl) | [Vota 📥](https://noa.wwmon.xyz/vote) | [Web (WIP) 🌐](https://noa.wwmon.xyz/)')
           .setImage(client.config.banner)
           .setFooter('Desarrollado por: ' + o.tag + ' y ' + mon.tag)
           .setTimestamp();
         message.channel.send({ embed });
       } else {
         let ayu = client.commands.get(args[0].toLowerCase()) || client.commands.get(client.aliases.get(args[0].toLowerCase()));
-        if (!ayu) return message.channel.send(client.message({ emoji: 'red', razón: 'ese comando no existe', usage: this.help.usage(message.prefix), message }))
-        if (ayu.help.category === 'Ocultos') return message.channel.send(client.message({ emoji: 'noidea', razón: 'no tengo idea de lo que estás hablando...', usage: this.help.usage(message.prefix), message }))
+        if (!ayu) return message.channel.send(client.message({ emoji: 'red', razón: 'ese comando no existe', usage: this.help.usage(message.prefix), message }));
+        if (ayu.help.category === 'Ocultos') return message.channel.send(client.message({ emoji: 'noidea', razón: 'no tengo idea de lo que estás hablando...', usage: this.help.usage(message.prefix), message }));
         if (ayu.config.cooldown === 0) ayu.config.cooldown = 2.5;
         embed
           .setTitle('Información del comando: ' + (ayu.help.name[0].toUpperCase() + ayu.help.name.slice(1)))

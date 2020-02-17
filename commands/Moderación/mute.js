@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'mute',
       description: 'Silencia al usuario mencionado de casi todos los canales del servidor',
       usage: prefix => `\`${prefix}mute <@usuario> [razón]\``,
-      examples: prefix => `\`${prefix}mute @Kayak#8292 Lenguaje inapropiado.\``,
+      examples: prefix => `\`${prefix}mute @Kayak#8292 Lenguaje inapropiado\``,
       enabled: true,
       ownerOnly: false,
       guildOnly: false,

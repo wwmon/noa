@@ -18,9 +18,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('Si solamente quieres saludar utiliza `' + message.prefix + 'hello` ^^');
-      if (message.mentions.users.first() === client.user) return message.channel.send('¿En serio me quieres dar un saludo? u.u');
-      if (message.mentions.users.size < 1) return message.channel.send('¡Vamos, decide a quién deseas dar un delicioso saludo!');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'heart', razón: `si solamente quieres saludar usa \`${message.prefix}hello ^^\``, usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: 'heart', razón: 'holiii~', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a esa persona que quieres ', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** saluda a **' + message.mentions.users.first().username + '**')

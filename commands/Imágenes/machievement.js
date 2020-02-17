@@ -4,7 +4,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       name: 'machievement',
       description: '¡Genera un logro del Minecraft!',
       usage: prefix => `\`${prefix}machievement <logro>/[título]\``,
-      examples: prefix => `\`${prefix}machievement Utiliza 700 comandos/Aficionado.\``,
+      examples: prefix => `\`${prefix}machievement Utiliza 700 comandos/Aficionado\``,
       enabled: true,
       cooldown: 3,
       aliases: ['mach'],

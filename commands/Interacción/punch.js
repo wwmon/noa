@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('No te puedes pegar solo...');
-      if (message.mentions.users.first() === client.user) return message.channel.send('No me golpees por favor T-T');
-      if (message.mentions.users.size < 1) return message.channel.send('¡Anda! Tienes ganas de golpear a alguien, pero no sabes a quien. Menciona al afortunado!');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'no te puedes pegar solo', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: 'sad', razón: 'nooo, a mí no', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a quien quieres golpear', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** golpeó a **' + message.mentions.users.first().username + '**')

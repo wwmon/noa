@@ -17,18 +17,19 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     const shorten = require('isgd');
     try {
-      if (!args[0]) return message.channel.send(`Especifique el enlace.\n> **Uso correcto:** \`${message.prefix}shortlink <URL> [título]\``);
-
-      if (!args[1]) {
-        shorten.shorten(args[0], function(res) {
-          if (res.startsWith('Error:')) return message.channel.send(`Por favor ingresa una URL válida`);
-          message.channel.send(`URL acortada: **<${res}>**`);
-        });
-      } else {
-        shorten.custom(args[0], args[1], function(res) {
-          if (res.startsWith('Error:')) return message.channel.send(`${res}`);
-          message.channel.send(`URL acortada con etiqueta: **<${res}>**`);
-        });
+      if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs', usage: this.help.usage(message.prefix), message }));
+      else {
+        if (!args[1]) {
+          shorten.shorten(args[0], res => {
+            if (res.startsWith('Error:')) message.channel.send(client.message({ emoji: 'red', razón: 'ingresa un enlace válido', usage: this.help.usage(message.prefix), message }));
+            else message.channel.send(client.message({ emoji: 'green', razón: 'enlace acortado: <' + res + '>', usage: this.help.usage(message.prefix), message }));
+          });
+        } else {
+          shorten.custom(args[0], args[1], res => {
+            if (res.startsWith('Error:')) message.channel.send(client.message({ emoji: 'red', razón: '<' + res + '>', usage: this.help.usage(message.prefix), message }));
+            else message.channel.send(client.message({ emoji: 'green', razón: 'enlace acortado con etiqueta <' + res + '>', usage: this.help.usage(message.prefix), message }));
+          });
+        }
       }
     } catch (e) {
       client.err({

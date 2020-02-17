@@ -16,9 +16,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
   async run(message, args, data, embed) {
     let client = this.client;
     try {
-      if (message.mentions.users.first() === message.author) return message.channel.send('Por favor **' + message.author.username + '**, si te mojas tú solo, te van a regañar...');
-      if (message.mentions.users.first() == client.user) return message.channel.send('Lo siento, ya me bañé :)');
-      if (message.mentions.users.size < 1) return message.channel.send('Piensa a quien quieres mojar 💦');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'si te mojas, te regañarán', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() == client.user) return message.channel.send(client.message({ emoji: '<:noaMonGun:672934974319493150>', razón: 'no te atrevas...', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: ':sweat_drops:', razón: 'noargs menciona a quien mojarás', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** está mojando a **' + message.mentions.users.first().username + '**')

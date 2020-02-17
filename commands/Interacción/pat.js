@@ -17,9 +17,9 @@ module.exports = class command extends require('../../base/models/Command.js') {
     let client = this.client;
     try {
       let img = await require('node-superfetch').get('https://nekos.life/api/v2/img/pat');
-      if (message.mentions.users.first() === message.author) return message.channel.send('No te puedes dar caricias solo... Sería **extraño**');
-      if (message.mentions.users.first() === client.user) return message.channel.send('Odio las caricias');
-      if (message.mentions.users.size < 1) return message.channel.send('¡Vamos! Elige a quién quieres acariciar');
+      if (message.mentions.users.first() === message.author) return message.channel.send(client.message({ emoji: 'red', razón: 'no te puedes acariciar a ti mism@, sería **extraño**', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.first() === client.user) return message.channel.send(client.message({ emoji: 'heart', razón: 'uwu', usage: this.help.usage(message.prefix), message }));
+      if (message.mentions.users.size < 1) return message.channel.send(client.message({ emoji: 'red', razón: 'noargs menciona a quien más amas (?)', usage: this.help.usage(message.prefix), message }));
       embed
         .setColor(client.fns.selectColor('lightcolors'))
         .setDescription('**' + message.author.username + '** acarició a **' + message.mentions.users.first().username + '**')

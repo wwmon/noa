@@ -21,7 +21,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .setColor(client.fns.selectColor('lightcolors'))
         .setAuthor('¡Zorros!', 'https://i.imgur.com/FzagKZr.png')
         .setImage(img.body.image);
-      msg.edit({ embed });
+      msg.edit('** **', { embed });
     } catch (e) {
       client.err({
         type: 'command',
