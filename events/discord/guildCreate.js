@@ -1,7 +1,10 @@
-module.exports = class event {
-  constructor(client) {
-    this.client = client;
+const Event = require("../event")
+
+class GuildCreate extends Event{
+  constructor(client){
+    super(client)
   }
+
   async run(guild) {
     let client = this.client;
     try {
@@ -23,3 +26,5 @@ module.exports = class event {
     }
   }
 };
+
+module.exports = GuildCreate

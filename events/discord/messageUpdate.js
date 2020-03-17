@@ -1,7 +1,10 @@
-module.exports = class event {
-  constructor(client) {
-    this.client = client;
+const Event = require("../event")
+
+class MessageUpdate extends Event {
+  constructor(client){
+    super(client)
   }
+
   async run(oldMessage, newMessage) {
     let client = this.client;
     if (oldMessage === newMessage) return;
@@ -17,3 +20,5 @@ module.exports = class event {
     }
   }
 };
+
+module.exports = MessageUpdate

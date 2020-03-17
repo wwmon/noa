@@ -1,7 +1,10 @@
-module.exports = class event {
-  constructor(client) {
-    this.client = client;
+const Event = require("../event")
+
+class Ready extends Event {
+  constructor(client){
+    super(client)
   }
+
   async run() {
     let client = this.client,
       prefix = client.config.prefix;
@@ -24,3 +27,5 @@ module.exports = class event {
     }
   }
 };
+
+module.exports = Ready

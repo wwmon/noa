@@ -1,4 +1,6 @@
-module.exports = class event {
+const Event = require("../event")
+
+class Vote extends Event{
   constructor(client) {
     this.client = client;
   }
@@ -28,3 +30,5 @@ module.exports = class event {
     }
   }
 };
+
+module.exports = Vote
