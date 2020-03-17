@@ -4,8 +4,8 @@ class Ready extends Event{
   constructor(client) {
     super(client)
   }
+
   async run(hook) {
-    let client = this.client;
     try {
       console.log(`¡Webhook listo! ${hook.path}`);
     } catch (e) {
