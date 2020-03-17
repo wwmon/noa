@@ -6,7 +6,7 @@ class Ready extends Event {
   }
 
   async run() {
-    const prefix = client.config.prefix;
+    const prefix = this.client.config.prefix;
 
     try {
       /*
@@ -14,19 +14,19 @@ class Ready extends Event {
       */
       let membersCount = 0;
 
-      client.guilds.cache.forEach(x => {
+      this.client.guilds.cache.forEach(x => {
         membersCount += x.memberCount;
       });
 
-      client.userCount = membersCount;
+      this.client.userCount = membersCount;
 
-      let elementos = [`❤️ ~ ${client.guilds.cache.size.toLocaleString()} servidores, ${client.userCount.toLocaleString()} usuarios`, `❤️ ~ ${client.config.invite}`, `❤️ ~ ${client.config.dbl}`, `❤️ ~ ${client.config.vote}`, `❤️ ~ ${client.config.donate}`, `❓ ~ ${prefix}help`, `❓ ~ ${client.config.support}`, `❓ ~ ${client.config.github}`, '❓ ~ https://noa.wwmon.xyz', `❓ ~ ${require('../../package.json').version}`];
-      
+      let elementos = [`❤️ ~ ${this.client.guilds.cache.size.toLocaleString()} servidores, ${this.client.userCount.toLocaleString()} usuarios`, `❤️ ~ ${this.client.config.invite}`, `❤️ ~ ${this.client.config.dbl}`, `❤️ ~ ${this.client.config.vote}`, `❤️ ~ ${this.client.config.donate}`, `❓ ~ ${prefix}help`, `❓ ~ ${this.client.config.support}`, `❓ ~ ${this.client.config.github}`, '❓ ~ https://noa.wwmon.xyz', `❓ ~ ${require('../../package.json').version}`];
+
       setInterval(() => {
-        client.user.setActivity(elementos[Math.floor(elementos.length * Math.random())]);
+        this.client.user.setActivity(elementos[Math.floor(elementos.length * Math.random())]);
       }, 30000);
     } catch (e) {
-      client.err({
+      this.client.err({
         type: 'event',
         name: 'ready',
         error: e
