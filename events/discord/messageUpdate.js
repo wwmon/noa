@@ -6,13 +6,11 @@ class MessageUpdate extends Event {
   }
 
   async run(oldMessage, newMessage) {
-    let client = this.client;
-    if (oldMessage === newMessage) return;
     if (oldMessage.content === newMessage.content) return;
     try {
-      client.emit('message', newMessage);
+      this.client.emit('message', newMessage);
     } catch (e) {
-      client.err({
+      this.client.err({
         type: 'event',
         name: 'messageUpdate',
         error: e
