@@ -1,10 +1,9 @@
 class Event {
-    constructor(client) {
-        this.client = client;
-    }
+  constructor(client) {
+    this.client = client;
+  }
 
-    async run(...args){}
-
+  async run(...args) {}
 }
 
-module.exports = Event
+module.exports = Event;

@@ -1,8 +1,8 @@
-const Event = require("../event")
+const Event = require('../event');
 
 class MessageUpdate extends Event {
-  constructor(client){
-    super(client)
+  constructor(client) {
+    super(client);
   }
 
   async run(oldMessage, newMessage) {
@@ -17,6 +17,6 @@ class MessageUpdate extends Event {
       });
     }
   }
-};
+}
 
-module.exports = MessageUpdate
+module.exports = MessageUpdate;

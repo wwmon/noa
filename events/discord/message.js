@@ -1,10 +1,10 @@
-const Event = require("../event")
+const Event = require('../event');
 
 class Message extends Event {
-  constructor(client){
-    super(client)
+  constructor(client) {
+    super(client);
   }
-  
+
   async run(message) {
     let client = this.client,
       cooldowns = client.cooldowns,
@@ -102,6 +102,6 @@ class Message extends Event {
       console.error(e);
     }
   }
-};
+}
 
-module.exports = Message
+module.exports = Message;

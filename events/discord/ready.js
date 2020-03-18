@@ -1,8 +1,8 @@
-const Event = require("../event")
+const Event = require('../event');
 
 class Ready extends Event {
-  constructor(client){
-    super(client)
+  constructor(client) {
+    super(client);
   }
 
   async run() {
@@ -10,8 +10,8 @@ class Ready extends Event {
 
     try {
       /*
-      * TODO: En ves de guardar la cantidad de miembros en ram, guardarlos en una base de datos.
-      */
+       * TODO: En lugar de guardar la cantidad de miembros en memoria, guardarlos en una base de datos.
+       */
       let membersCount = 0;
 
       this.client.guilds.cache.forEach(x => {
@@ -33,6 +33,6 @@ class Ready extends Event {
       });
     }
   }
-};
+}
 
-module.exports = Ready
+module.exports = Ready;

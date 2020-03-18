@@ -1,8 +1,8 @@
-const Event = require("../event")
+const Event = require('../event');
 
-class guildDelete extends Event{
-  constructor(client){
-    super(client)
+class guildDelete extends Event {
+  constructor(client) {
+    super(client);
   }
 
   async run(guild) {
@@ -25,6 +25,6 @@ class guildDelete extends Event{
       });
     }
   }
-};
+}
 
-module.exports = guildDelete
+module.exports = guildDelete;

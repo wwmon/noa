@@ -1,8 +1,8 @@
-const Event = require("../event")
+const Event = require('../event');
 
-class GuildCreate extends Event{
-  constructor(client){
-    super(client)
+class GuildCreate extends Event {
+  constructor(client) {
+    super(client);
   }
 
   async run(guild) {
@@ -26,6 +26,6 @@ class GuildCreate extends Event{
       });
     }
   }
-};
+}
 
-module.exports = GuildCreate
+module.exports = GuildCreate;

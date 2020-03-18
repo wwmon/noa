@@ -1,20 +1,20 @@
 const readdir = require('util').promisify(require('fs').readdir),
-  mongoose = require("mongoose"),
+  mongoose = require('mongoose'),
   express = require('express'),
-  http = require('http')
+  http = require('http');
 
-const client = new (require('./base/Client'))({ ws: { properties: { $browser: 'Discord iOS' } } })
+const client = new (require('./base/Client'))({ ws: { properties: { $browser: 'Discord iOS' } } });
 
-const app = express()
+const app = express();
 
-const server = http.createServer(app)
-const port = 5000
+const server = http.createServer(app);
+const port = 5000;
 
-const dbl = new (require('dblapi.js'))(client.config.dblKey, { webhookServer: server, webhookAuth: client.config.dblSkey })
+const dbl = new (require('dblapi.js'))(client.config.dblKey, { webhookServer: server, webhookAuth: client.config.dblSkey });
 
 async function init() {
   try {
-    const commandSections = await readdir('./commands')
+    const commandSections = await readdir('./commands');
     const events = await readdir('./events/discord');
 
     commandSections.forEach(async section => {
@@ -31,30 +31,32 @@ async function init() {
       event = event.split('.');
 
       client.on(event[0], (...args) => {
-        const Event = require(`./events/discord/${event[0]}.js`)
-        const eventInstance = new Event(client)
+        const Event = require(`./events/discord/${event[0]}.js`);
+        const eventInstance = new Event(client);
 
-        eventInstance.run(...args)
+        eventInstance.run(...args);
       });
 
       console.log(`[E] El evento ${event[0]} cargó con éxito`);
     });
 
-    client.login(client.config.token)
+    client
+      .login(client.config.token)
       .then(() => {
-        console.log('¡Iniciando sesión!')
+        console.log('¡Iniciando sesión!');
       })
       .catch(err => {
-        console.error(err)
-      })
+        console.error(err);
+      });
 
-    mongoose.connect(client.config.mongo, { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose
+      .connect(client.config.mongo, { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => {
         console.log('¡Conectando con la base de datos!');
       })
       .catch(err => {
-        console.error(err)
-      })
+        console.error(err);
+      });
 
     client.dbl = dbl;
     return 'La configuración inicial del bot ha cargado con éxito';
@@ -70,10 +72,10 @@ async function web() {
     DBLEvents.forEach(ev => {
       ev = ev.split('.');
       dbl.webhook.on(ev[0], (...args) => {
-        const Event = require(`./events/dbl/${ev[0]}.js`)
-        const eventInstance = new Event(client)
+        const Event = require(`./events/dbl/${ev[0]}.js`);
+        const eventInstance = new Event(client);
 
-        eventInstance.run(...args)
+        eventInstance.run(...args);
       });
       console.log(`[D] El evento ${ev[0]}DBL cargó con éxito`);
     });
@@ -97,7 +99,7 @@ async function web() {
     server.listen(port, () => {
       console.log(`Escuchando en ${port}`);
     });
-    
+
     return 'La configuración de la web ha cargado con éxito';
   } catch (e) {
     console.error(e);

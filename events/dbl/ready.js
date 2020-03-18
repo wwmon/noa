@@ -1,8 +1,8 @@
-const Event = require("../event")
+const Event = require('../event');
 
-class Ready extends Event{
+class Ready extends Event {
   constructor(client) {
-    super(client)
+    super(client);
   }
 
   async run(hook) {
@@ -16,6 +16,6 @@ class Ready extends Event{
       });
     }
   }
-};
+}
 
-module.exports = Ready
+module.exports = Ready;

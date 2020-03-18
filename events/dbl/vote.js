@@ -1,17 +1,17 @@
-const discordjs = require("discord.js")
+const discordjs = require('discord.js');
 
-const Event = require("../event")
+const Event = require('../event');
 
-class Vote extends Event{
+class Vote extends Event {
   constructor(client) {
-    super(client)
+    super(client);
   }
 
   async run(vote) {
     try {
       const user = await this.client.users.fetch(vote.user),
         bot = await this.client.users.fetch(vote.bot),
-        uwu = await this.client.dbl.getBot(this.client.config.botID), // TODO: Ponerle un nombre mas descriptivo
+        uwu = await this.client.dbl.getBot(this.client.config.botID), // TODO: Ponerle un nombre más descriptivo.
         userVotedEmbed = new discordjs.MessageEmbed()
           .setColor(this.client.fns.selectColor('lightcolors'))
           .setThumbnail(user.displayAvatarURL())
@@ -20,7 +20,7 @@ class Vote extends Event{
           .addField('• Usuario', `~ Tag: **${user.tag}**\n~ ID: **${user.id}**`)
           .addField('• Total de votos', `~ Este mes: **${uwu.monthlyPoints}**\n~ Desde siempre: **${uwu.points}**`)
           .setTimestamp();
-          
+
       if (this.client.dbl.isWeekend() === true) userVotedEmbed.addField('• Multiplicador', '¡Fin de semana, tu voto cuenta x2!');
       if (vote.type === 'test') userVotedEmbed.setFooter('(Voto de prueba)');
       this.client.votes.send(userVotedEmbed);
@@ -32,6 +32,6 @@ class Vote extends Event{
       });
     }
   }
-};
+}
 
-module.exports = Vote
+module.exports = Vote;
