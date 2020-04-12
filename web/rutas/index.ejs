@@ -5,119 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Noa - Discord Bot</title>
-    <!-- BT CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-    <!-- Noa CSS -->
-    <link rel="stylesheet" href="index.css" />
-    <!-- Fuente JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <!-- Favicon -->
+
+    <link rel="stylesheet" href="../css/index.css" />
+
     <link rel="icon" type="image/png" sizes="205x205" href="https://cdn.glitch.com/4eb7b550-2163-4aeb-88e7-348d9f108c90%2F455c33a6-ad3d-4102-8443-e038091f47cd.image.png" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="wrapper">
-      <!-- Sidebar  -->
-      <nav id="sidebar">
-        <!-- Encabezado sidebar -->
-        <div class="sidebar-header">
-          <h3>Noa Himesaka</h3>
-          <strong>NH</strong>
+    <header class="header">
+      <div class="header__owners-container">
+        <div class="owners-container__perfil">
+          <figure class="perfil-info">
+            mon#0010
+          </figure>
+          <figure class="perfil-img">
+            <img src="https://images.discordapp.net/avatars/608817245417898004/a_c358ce20194faf5c81c564dd197c06a7.png?size=512" alt="" />
+          </figure>
         </div>
-        <!-- /Encabezado sidebar/ -->
-        <!-- Enlistado sidebar -->
-        <ul class="list-unstyled components">
-          <!-- Inicio sidebar -->
-          <li class="active">
-            <a href="#noa">
-              <i class="fas fa-home"></i>
-              Inicio
-            </a>
-          </li>
-          <!-- /Inicio sidebar/ -->
-          <!-- Docs sidebar -->
-          <li>
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-              <i class="fas fa-book"></i>
-              Docs
-            </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-              <li>
-                <a href="#faq">FAQ</a>
-              </li>
-              <li>
-                <a href="#comandos">Comandos</a>
-              </li>
-            </ul>
-          </li>
-          <!-- /Docs sidebar/ -->
-          <!-- News sidebar -->
-          <li>
-            <a href="#news">
-              <i class="fas fa-bell"></i>
-              News
-            </a>
-          </li>
-          <!-- /News sidebar/ -->
-        </ul>
-        <!-- /Enlistado sidebar/ -->
-      </nav>
-      <!-- /Sidebar/ -->
-      <!-- Page Content  -->
-      <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-              <i class="fas fa-align-left"></i>
-              <span>Menú</span>
-            </button>
-            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Menu">
-              <i class="fas fa-align-justify"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/support">Soporte</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/invite">Invítame</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/dbl">DBL</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <a name="noa"></a>
-        <h2>Noa</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nunc arcu, dignissim a tempus at, interdum in risus. Maecenas dictum tincidunt nulla. Suspendisse potenti. Cras lacinia suscipit magna, feugiat egestas mi. Phasellus a elementum neque. Curabitur consectetur, est id hendrerit imperdiet, diam lorem lobortis erat, maximus lobortis diam diam et metus. Sed tortor quam, dictum in aliquet non, vehicula sed erat. Nullam vitae ultricies tellus. Etiam porta ex at sem consectetur, id fermentum ante finibus. Praesent lobortis convallis augue, quis lobortis eros convallis vel. Proin quis nibh at erat sodales lacinia. Nunc eu velit eget odio finibus sagittis. Cras gravida auctor augue nec mattis. Nulla in feugiat ipsum. Phasellus consectetur sit amet mauris eu tristique. Proin consequat commodo tortor auctor consectetur. Fusce in velit eget neque lacinia sodales finibus vitae sapien. Vestibulum lacinia ultrices ligula, quis finibus felis vehicula in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce facilisis faucibus lectus. Proin maximus dolor non sapien imperdiet, in ultricies dolor iaculis. Donec volutpat velit ligula, sit amet viverra ex tempor et. Fusce at euismod diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum laoreet rhoncus pellentesque. Aliquam mattis in purus sed mollis.</p>
-        <div class="line"></div>
-        <a name="faq"></a>
-        <h2>FAQ</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nunc arcu, dignissim a tempus at, interdum in risus. Maecenas dictum tincidunt nulla. Suspendisse potenti. Cras lacinia suscipit magna, feugiat egestas mi. Phasellus a elementum neque. Curabitur consectetur, est id hendrerit imperdiet, diam lorem lobortis erat, maximus lobortis diam diam et metus. Sed tortor quam, dictum in aliquet non, vehicula sed erat. Nullam vitae ultricies tellus. Etiam porta ex at sem consectetur, id fermentum ante finibus. Praesent lobortis convallis augue, quis lobortis eros convallis vel. Proin quis nibh at erat sodales lacinia. Nunc eu velit eget odio finibus sagittis. Cras gravida auctor augue nec mattis. Nulla in feugiat ipsum. Phasellus consectetur sit amet mauris eu tristique. Proin consequat commodo tortor auctor consectetur. Fusce in velit eget neque lacinia sodales finibus vitae sapien. Vestibulum lacinia ultrices ligula, quis finibus felis vehicula in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce facilisis faucibus lectus. Proin maximus dolor non sapien imperdiet, in ultricies dolor iaculis. Donec volutpat velit ligula, sit amet viverra ex tempor et. Fusce at euismod diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum laoreet rhoncus pellentesque. Aliquam mattis in purus sed mollis.</p>
-        <div class="line"></div>
-        <a name="comandos"></a>
-        <h2>Comandos</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nunc arcu, dignissim a tempus at, interdum in risus. Maecenas dictum tincidunt nulla. Suspendisse potenti. Cras lacinia suscipit magna, feugiat egestas mi. Phasellus a elementum neque. Curabitur consectetur, est id hendrerit imperdiet, diam lorem lobortis erat, maximus lobortis diam diam et metus. Sed tortor quam, dictum in aliquet non, vehicula sed erat. Nullam vitae ultricies tellus. Etiam porta ex at sem consectetur, id fermentum ante finibus. Praesent lobortis convallis augue, quis lobortis eros convallis vel. Proin quis nibh at erat sodales lacinia. Nunc eu velit eget odio finibus sagittis. Cras gravida auctor augue nec mattis. Nulla in feugiat ipsum. Phasellus consectetur sit amet mauris eu tristique. Proin consequat commodo tortor auctor consectetur. Fusce in velit eget neque lacinia sodales finibus vitae sapien. Vestibulum lacinia ultrices ligula, quis finibus felis vehicula in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce facilisis faucibus lectus. Proin maximus dolor non sapien imperdiet, in ultricies dolor iaculis. Donec volutpat velit ligula, sit amet viverra ex tempor et. Fusce at euismod diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum laoreet rhoncus pellentesque. Aliquam mattis in purus sed mollis.</p>
-        <div class="line"></div>
-        <a name="news"></a>
-        <h3>News</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nunc arcu, dignissim a tempus at, interdum in risus. Maecenas dictum tincidunt nulla. Suspendisse potenti. Cras lacinia suscipit magna, feugiat egestas mi. Phasellus a elementum neque. Curabitur consectetur, est id hendrerit imperdiet, diam lorem lobortis erat, maximus lobortis diam diam et metus. Sed tortor quam, dictum in aliquet non, vehicula sed erat. Nullam vitae ultricies tellus. Etiam porta ex at sem consectetur, id fermentum ante finibus. Praesent lobortis convallis augue, quis lobortis eros convallis vel. Proin quis nibh at erat sodales lacinia. Nunc eu velit eget odio finibus sagittis. Cras gravida auctor augue nec mattis. Nulla in feugiat ipsum. Phasellus consectetur sit amet mauris eu tristique. Proin consequat commodo tortor auctor consectetur. Fusce in velit eget neque lacinia sodales finibus vitae sapien. Vestibulum lacinia ultrices ligula, quis finibus felis vehicula in. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce facilisis faucibus lectus. Proin maximus dolor non sapien imperdiet, in ultricies dolor iaculis. Donec volutpat velit ligula, sit amet viverra ex tempor et. Fusce at euismod diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum laoreet rhoncus pellentesque. Aliquam mattis in purus sed mollis.</p>
+        <div class="owners-container__perfil">
+          <span class="perfil-info">
+            Javi ϟ#1527
+          </span>
+          <figure class="perfil-img">
+            <img src="https://images.discordapp.net/avatars/427692173039894531/dd3b824859faf13c49018756a0ed8d72.png?size=512" alt="" />
+          </figure>
+        </div>
       </div>
-    </div>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      $(document).ready(() => {
-        $('#sidebarCollapse').on('click', () => {
-          $('#sidebar').toggleClass('active');
-        });
-      });
-    </script>
+
+      <div class="header__stats-container">
+        <div class="stats">
+          <span class="stats-icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span class="stats-count">1, 665</span>
+        </div>
+
+        <div class="stats">
+          <span class="stats-icon">
+            <i class="fas fa-server"></i>
+          </span>
+          <span class="stats-count">550</span>
+        </div>
+      </div>
+
+      <div class="header__contact">
+        <a href="https://github.com/wwmon/noa">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://discord.gg/wyVHNYc">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <div class="nav__logo-box">
+        <img src="https://media.discordapp.net/attachments/678059657624813588/678061291444764722/noa_logo.png" alt="Noa Logo" />
+      </div>
+
+      <a href="#" class="btn btn-invite-me u-mb-medium">invitame <i class="fas fa-plus"></i></a>
+
+      <ul class="nav__menu">
+        <li class="menu__item active">
+          <span><i class="fas fa-home"></i></span>
+          <a href="#">Inicio</a>
+        </li>
+        <li class="menu__item">
+          <span><i class="fas fa-keyboard"></i></span>
+          <a href="#">Comandos</a>
+        </li>
+        <li class="menu__item">
+          <span><i class="fas fa-bell"></i></span>
+          <a href="#">Noticias</a>
+        </li>
+        <li class="menu__item">
+          <span><i class="fas fa-question"></i></span>
+          <a href="#">FAQS</a>
+        </li>
+        <li class="menu__item">
+          <span><i class="fas fa-life-ring"></i></span>
+          <a href="#">Soporte</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="main">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur.
+    </main>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/brands.js" crossorigin="anonymous"></script>
   </body>
 </html>

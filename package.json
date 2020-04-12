@@ -4,7 +4,8 @@
   "description": "Noa Discord Bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "compile:sass": "sass --watch web/sass:web/css"
   },
   "engines": {
     "node": "12.x"
@@ -35,5 +36,8 @@
   "repository": {
     "url": "https://glitch.com/@ai-mon"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.26.3"
+  }
 }

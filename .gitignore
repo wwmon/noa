@@ -3,6 +3,9 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 ### Node ###
+#sass
+sass/
+*.map
 # Logs
 logs
 *.log
