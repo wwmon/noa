@@ -17,8 +17,12 @@ module.exports = class command extends require('../../base/models/Command.js') {
     try {
       if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs agrega el logro que quieres obtener', usage: this.help.usage(message.prefix), message }));
       else {
+        let texto = args.join(' ');
+        if (message.mentions.users.first()) message.mentions.users.array().forEach((x) => (texto = texto.replace(`<@!${x.id}>`, `@${x.username}`)));
+        if (message.mentions.roles.first()) message.mentions.roles.array().forEach((x) => (texto = texto.replace(`<@&${x.id}>`, `@${x.name}`)));
+        if (message.mentions.channels.first()) message.mentions.channels.array().forEach((x) => (texto = texto.replace(`<#${x.id}>`, `#${x.name}`)));
         let msg = await message.channel.send(client.fns.reply('generating', message)),
-          img = await client.weez.logro(args.join(' '));
+          img = await client.weez.logro(texto);
         msg.delete();
         message.channel.send({ files: [img] });
       }

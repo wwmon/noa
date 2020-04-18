@@ -22,6 +22,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
       if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs', message }, this.help.usage(message.prefix)) + '\nOpciones: `' + opciones.join('`, `') + '`');
       else if (args[0].toLowerCase() === opciones[0]) {
         if (!args[1]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs necesitas proporcionar la ID de algún usuario', usage: this.help.usage(message.prefix), message }));
+        if (client.config.owners.includes(args[1])) message.channel.send(client.message({ emoji: 'red', razón: 'no puedes agregar a un desarrollador a la lista negra', message }));
         else {
           let user = await client.users.fetch(args[1]);
           if (!user) message.channel.send(client.message({ emoji: 'red', razón: 'ese no es un usuario válido', usage: this.help.usage(message.prefix), message }));

@@ -16,7 +16,7 @@ module.exports = class event {
           .addField('• Usuario', `~ Tag: **${user.tag}**\n~ ID: **${user.id}**`)
           .addField('• Total de votos', `~ Este mes: **${uwu.monthlyPoints}**\n~ Desde siempre: **${uwu.points}**`)
           .setTimestamp();
-      if (client.dbl.isWeekend() === true) embed.addField('• Multiplicador', '¡Fin de semana, tu voto cuenta x2!');
+      if (client.dbl.isWeekend()) embed.addField('• Multiplicador', '¡Fin de semana, tu voto cuenta x2!');
       if (vote.type === 'test') embed.setFooter('(Voto de prueba)');
       client.votes.send(embed);
     } catch (e) {

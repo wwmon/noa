@@ -1012,6 +1012,8 @@ crash.log
 
 
 #Others
+config.js
+package-lock.json
+
 shrinkwrap.yaml
 .glitch-assets
-config.js

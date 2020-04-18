@@ -24,9 +24,22 @@ module.exports = class command extends require('../../base/models/Command.js') {
         .map((arg) => arg.trim());
       if (!args[0]) message.channel.send(client.message({ emoji: 'red', razón: 'noargs escribe el logro de tus sueños', usage: this.help.usage(message.prefix), message }));
       else {
+        let el1 = args[0];
+        if (message.mentions.users.first())
+          message.mentions.users.array().forEach((x) => {
+            el1 = el1.replace(`<@!${x.id}>`, `@${x.username}`);
+          });
+        if (message.mentions.roles.first())
+          message.mentions.roles.array().forEach((x) => {
+            el1 = el1.replace(`<@&${x.id}>`, `@${x.name}`);
+          });
+        if (message.mentions.channels.first())
+          message.mentions.channels.array().forEach((x) => {
+            el1 = el1.replace(`<#${x.id}>`, `#${x.name}`);
+          });
         if (args[0].length >= 25) message.channel.send({ emoji: 'red', razón: 'el logro no puede exceder los 25 carácteres', message });
         else {
-          message.channel.send(new (require('discord.js')).MessageAttachment(`https://minecraftskinstealer.com/achievement/${random}/${args[1] ? (args[1].length < 25 ? args[1] : `Logro%20obtenido`) : `Logro%20obtenido`}/${args[0]}`, 'achievement.png'));
+          message.channel.send(new (require('discord.js').MessageAttachment)(`https://minecraftskinstealer.com/achievement/${random}/${args[1] ? (args[1].length < 25 ? args[1] : `Logro%20obtenido`) : `Logro%20obtenido`}/${el1}`, 'achievement.png'));
         }
       }
     } catch (e) {

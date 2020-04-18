@@ -27,7 +27,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         msg.edit('** **', { embed: { color: 0xc82828, title: '<:pokemonLeft:600412308912734262> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
         message.channel.send(client.message({ emoji: 'red', razón: 'tardaste mucho en escribir, ¡al pókemon le dio tiempo a huir!', usage: this.help.usage(message.prefix), message }));
         return;
-      } else if (attempts.content === pokem.name.toLowerCase()) {
+      } else if (attempts.content.toLowerCase() === pokem.name.toLowerCase()) {
         await msg.edit('** **', { embed: { color: 0x3ce3f7, title: '<:pokeball:600408195457875971> ¿Cuál es este Pokémon?', image: { url: pokem.imageURL } } });
         message.channel.send(client.message({ emoji: 'green', razón: `bien hecho, ¡**${pokem.name[0].toUpperCase()}${pokem.name.slice(1)}** ha sido atrapado!`, usage: this.help.usage(message.prefix), message }));
         return;

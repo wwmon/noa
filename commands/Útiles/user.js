@@ -69,7 +69,7 @@ module.exports = class command extends require('../../base/models/Command.js') {
         if (roles.length >= 1000) roles = `La cantidad de roles es muy extensa, por lo tanto su cifra exacta es: ${member.roles.size}`;
         let activities = user.presence.activities[0];
         embed
-          .setThumbnail(user.displayAvatarURL())
+          .setThumbnail(user.displayAvatarURL({ size: 2048, dynamic: true }))
           .setColor(colorEmbed[user.presence.status])
           .setAuthor(`${user.tag}`, user.displayAvatarURL())
           .addField('Identificación', `• Nombre y discriminador: ${user.tag}\n• ID: ${user.id}\n• Apodo: ${member.displayName}`)

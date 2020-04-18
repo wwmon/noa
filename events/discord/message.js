@@ -11,6 +11,11 @@ module.exports = class event {
       Weez = require('weez'),
       weez = new Weez.WeezAPI(client.config.weezKey);
     try {
+      let number = 0;
+      client.guilds.cache.forEach((x) => {
+        number += x.memberCount;
+      });
+      client.userCount = number;
       client.weez = weez;
       if (message.author.bot) return;
       data.user = await client.findOrCreateUser({ id: message.author.id });
