@@ -39,10 +39,10 @@
             <i class="fas fa-heart"></i>
           </span>
           <span class="stats-count">
-          <%
-            client.dbl.getBot(client.config.botID).then((bot) => 
-              `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)`
-            );
+          <%=
+          client.dbl.getBot(client.config.botID).then((bot) => 
+            `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)`
+          );
           %>
           </span>
         </div>
