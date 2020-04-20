@@ -20,7 +20,7 @@
             mon#0010
           </figure>
           <figure class="perfil-img">
-            <img src="https://images.discordapp.net/avatars/608817245417898004/a_c358ce20194faf5c81c564dd197c06a7.png?size=512" alt="" />
+            <img src="https://images.discordapp.net/avatars/608817245417898004/79ac123517009e3f491c1ce13751deac.png?size=512" alt="" />
           </figure>
         </div>
         <div class="owners-container__perfil">
@@ -38,7 +38,13 @@
           <span class="stats-icon">
             <i class="fas fa-heart"></i>
           </span>
-          <span class="stats-count">1, 665</span>
+          <span class="stats-count">
+          <%=
+          client.dbl.getBot(client.config.botID).then((bot) => 
+            `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)`
+          );
+          %>
+          </span>
         </div>
 
         <div class="stats">
