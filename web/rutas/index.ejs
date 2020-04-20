@@ -13,58 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="header">
-      <div class="header__owners-container">
-        <div class="owners-container__perfil">
-          <figure class="perfil-info">
-            mon#0010
-          </figure>
-          <figure class="perfil-img">
-            <img src="https://images.discordapp.net/avatars/608817245417898004/79ac123517009e3f491c1ce13751deac.png?size=512" alt="" />
-          </figure>
-        </div>
-        <div class="owners-container__perfil">
-          <span class="perfil-info">
-            Javi ϟ#1527
-          </span>
-          <figure class="perfil-img">
-            <img src="https://images.discordapp.net/avatars/427692173039894531/dd3b824859faf13c49018756a0ed8d72.png?size=512" alt="" />
-          </figure>
-        </div>
-      </div>
-
-      <div class="header__stats-container">
-        <div class="stats">
-          <span class="stats-icon">
-            <i class="fas fa-heart"></i>
-          </span>
-          <span class="stats-count">
-          <%=
-          client.dbl.getBot(client.config.botID).then((bot) => 
-            `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)`
-          );
-          %>
-          </span>
-        </div>
-
-        <div class="stats">
-          <span class="stats-icon">
-            <i class="fas fa-server"></i>
-          </span>
-          <span class="stats-count">550</span>
-        </div>
-      </div>
-
-      <div class="header__contact">
-        <a href="https://github.com/wwmon/noa">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://noa.wwmon.xyz/support">
-          <i class="fab fa-discord"></i>
-        </a>
-      </div>
-    </header>
-
     <nav class="nav">
       <div class="nav__logo-box">
         <img src="https://media.discordapp.net/attachments/678059657624813588/678061291444764722/noa_logo.png" alt="Noa Logo" />
@@ -105,6 +53,55 @@
         </li>
       </ul>
     </nav>
+
+    <header class="header">
+      <div class="header__owners-container">
+        <div class="owners-container__perfil">
+          <figure class="perfil-info">
+            mon#0010
+          </figure>
+          <figure class="perfil-img">
+            <img src="https://images.discordapp.net/avatars/608817245417898004/79ac123517009e3f491c1ce13751deac.png?size=512" alt="" />
+          </figure>
+        </div>
+        <div class="owners-container__perfil">
+          <span class="perfil-info">
+            Javi ϟ#1527
+          </span>
+          <figure class="perfil-img">
+            <img src="https://images.discordapp.net/avatars/427692173039894531/dd3b824859faf13c49018756a0ed8d72.png?size=512" alt="" />
+          </figure>
+        </div>
+      </div>
+
+      <div class="header__stats-container">
+        <div class="stats">
+          <span class="stats-icon">
+            <i class="fas fa-heart"></i>
+          </span>
+          <span class="stats-count">
+            <%= client.dbl.getBot(client.config.botID).then((bot) => `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)` ); %>
+          </span>
+        </div>
+
+        <div class="stats">
+          <span class="stats-icon">
+            <i class="fas fa-server"></i>
+          </span>
+          <span class="stats-count">550</span>
+        </div>
+      </div>
+
+      <div class="header__contact">
+        <a href="https://github.com/wwmon/noa">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://noa.wwmon.xyz/support">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+    </header>
+
     <main class="main">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, asperiores cum! Excepturi ratione perspiciatis fugit animi quaerat consequuntur, cupiditate molestiae commodi aliquid fugiat beatae deserunt voluptas eaque expedita sit consequatur.
       <button class="btn-menu">
