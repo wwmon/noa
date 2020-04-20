@@ -41,7 +41,7 @@
           <span class="stats-count">
           <%
             client.dbl.getBot(client.config.botID).then((bot) => 
-              ${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)
+              `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)`
             );
           %>
           </span>
