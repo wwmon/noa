@@ -40,11 +40,9 @@
           </span>
           <span class="stats-count">
           <%
-            let votes;
-            client.dbl.getBot(client.config.botID).then((bot) => {
-              votes = `${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)`
-            });
-            votes;
+            client.dbl.getBot(client.config.botID).then((bot) => 
+              ${bot.points.toLocaleString()} votos, (${bot.monthlyPoints.toLocaleString()} en este mes)
+            );
           %>
           </span>
         </div>
