@@ -38,7 +38,9 @@
           <span class="stats-icon">
             <i class="fas fa-heart"></i>
           </span>
-          <span class="stats-count">1, 665</span>
+          <span class="stats-count">
+            <% let votes; client.dbl.getBot(client.config.botID).then((bot) => { votes = `${bot.points.toLocaleString()} (${bot.monthlyPoints.toLocaleString()} este mes)` }); votes; %>
+          </span>
         </div>
 
         <div class="stats">
