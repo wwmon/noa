@@ -15,8 +15,8 @@ module.exports = class event {
           .setDescription('¡Tú también vota por ' + bot.username + ' [haciendo clic aquí](https://top.gg/bot/' + bot.id + '/vote)!')
           .addField('• Usuario', `~ Tag: **${user.tag}**\n~ ID: **${user.id}**`)
           .addField('• Total de votos', `~ Este mes: **${uwu.monthlyPoints}**\n~ Desde siempre: **${uwu.points}**`)
-          .setTimestamp();
-      if (client.dbl.isWeekend()) embed.addField('• Multiplicador', '¡Fin de semana, tu voto cuenta x2!');
+          .setTimestamp()
+          .addField('• Multiplicador', client.dbl.isWeekend() ? '¡Fin de semana, tu voto cuenta x2!' : 'Sólamente los fines de semana');
       if (vote.type === 'test') embed.setFooter('(Voto de prueba)');
       client.votes.send(embed);
     } catch (e) {
