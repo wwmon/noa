@@ -1,0 +1,102 @@
+.header {
+  width: 80vw;
+  height: 7rem;
+  max-height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 20vw;
+  border-bottom: 2px solid $color-primary;
+  box-shadow: 0 0.6rem 0 rgba($color-primary, 0.1);
+  background-color: $color-white;
+
+  &__owners-container {
+    display: flex;
+
+    & .owners-container__perfil {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 2rem;
+
+      & .perfil-info {
+        margin: 0;
+        padding: 0.5rem 3rem 0.5rem 1rem;
+        border-radius: 100px;
+        background-color: $color-primary;
+        box-shadow: 0 3px 0 rgba($color-primary, 0.1);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: $color-white-light;
+      }
+
+      & .perfil-img {
+        width: 4rem;
+        height: 4rem;
+        margin: 0;
+        margin-left: -2rem;
+        border-radius: 100%;
+        box-shadow: 0 3px 0 rgba($color-primary, 0.1);
+        background-color: $color-primary;
+
+        img {
+          width: inherit;
+          height: inherit;
+          border-radius: inherit;
+        }
+      }
+    }
+  }
+
+  &__stats-container {
+    display: flex;
+
+    & .stats {
+      height: 30px;
+      margin-right: 2rem;
+      padding-right: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100px;
+      background-color: $color-primary;
+      box-shadow: 0 3px 0 rgba($color-primary, 0.1);
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: $color-white-light;
+
+      &-icon {
+        width: 4rem;
+        height: 4rem;
+        margin-left: -1px;
+        margin-right: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-white;
+        border-radius: 100%;
+        box-shadow: 0 3px 0 rgba($color-primary, 0.1);
+        font-size: 2rem;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+
+    & a {
+      margin-right: 2rem;
+      font-size: 3rem;
+      color: $color-primary;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

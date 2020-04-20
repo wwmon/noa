@@ -1,0 +1,24 @@
+.main {
+  padding: 4rem 15rem;
+  position: fixed;
+  left: 20vw;
+  top: 10vh;
+  height: 80vh;
+  font-size: 1.8rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar-track {
+    background-color: $color-white-light;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: $color-white-light;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $color-primary;
+  }
+}

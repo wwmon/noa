@@ -1,0 +1,43 @@
+.btn {
+  &:active,
+  &:link {
+    display: inline-block;
+    position: relative;
+    padding: 1.3rem 4rem;
+    text-transform: capitalize;
+    text-decoration: none;
+    border-radius: 10rem;
+    font-size: 1.8rem;
+    transition: all 0.2s;
+  }
+
+  &-invite-me {
+    background-color: $color-secondary;
+    color: $color-primary-light;
+    box-shadow: 0 0.6rem 0 rgba($color-secondary, 0.2);
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.3rem 0 rgba($color-secondary, 0.2);
+  }
+
+  &-menu {
+    width: 6rem;
+    height: 6rem;
+    position: fixed;
+    bottom: 5vh;
+    right: 10vw;
+    display: none;
+    outline: none;
+    border: none;
+    border-radius: 100%;
+    background-color: $color-primary;
+    color: $color-primary-light;
+    font-size: 1.6rem;
+  }
+}
